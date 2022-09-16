@@ -11,9 +11,3 @@
 
 # Learning process
 
-## Week 2
-
-* #### Cài đặt Android Studio, Flutter, Dart
-* #### App đầu tiên. HelloWorld
-
-----
