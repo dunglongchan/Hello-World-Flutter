@@ -9,5 +9,3 @@
 
 ----
 
-# Learning process
-
