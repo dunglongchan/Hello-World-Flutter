@@ -1,10 +1,19 @@
-Phát triển dứng dụng di động - INT3020 40
+# Nhóm 13 - INT 3120 40
 
-Tuần 1: Hello World Flutter
+## README    
 
-###Thành viên nhóm: 
-  Trần Long Dũng - 19021245
-  Bùi Đăng Nam Bình - 19021225
-  Chu Thanh Tùng - 19021386
+# Thành viên
+* Trần Long Dũng - 19021245
+* Chu Thành Tùng - 19021386
+* Bùi Đăng Nam Bình - 19021225
 
-Kết quả thu được
+----
+
+# Learning process
+
+## Week 2
+
+* #### Cài đặt Android Studio, Flutter, Dart
+* #### App đầu tiên. HelloWorld
+
+----
