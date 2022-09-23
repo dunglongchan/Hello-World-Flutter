@@ -26,9 +26,10 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(this.title),
       ),
-      body: Center(
-          child: Text(
-        'Tran Long Dung',
+      body: const Center(
+          child: TextField(
+        autocorrect: true,
+        autofocus: true,
       )),
     );
   }
