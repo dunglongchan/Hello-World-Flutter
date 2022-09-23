@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
@@ -26,11 +27,9 @@ class MyHomePage extends StatelessWidget {
         title: Text(this.title),
       ),
       body: Center(
-          child:
-          Text(
-            'Hello World',
-          )
-      ),
+          child: Text(
+        'Tran Long Dung',
+      )),
     );
   }
 }
