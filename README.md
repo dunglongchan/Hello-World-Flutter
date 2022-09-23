@@ -7,8 +7,15 @@
 * Chu Thành Tùng - 19021386
 * Bùi Đăng Nam Bình - 19021225
 
+# Week 1: Hello world
+
 
 ![image](https://user-images.githubusercontent.com/62632444/190583727-120a6125-c1f7-4ba7-8487-20448ed0088f.png)
 
 ----
+
+# Week 2: TextField + Figma
+https://drive.google.com/file/d/18_UWvRmOJGlX50AhLSJNcfJaq__L8U_m/view?usp=sharing (link file MP4)
+https://drive.google.com/file/d/19eOUvO7IkJrKZTdvhCVcAh5SXR7EZV9e/view?usp=sharing (link file MOV)
+
 
