@@ -26,5 +26,6 @@ Bấm button Xác nhận sẽ chuyển tới màn Home
 Màn Home sử dụng Listview
 
 <GIF>
-![me](https://giphy.com/gifs/ljkw3fOodcBDGB485fa)
+![giphy](https://user-images.githubusercontent.com/62632444/193195385-0b37f6d5-5c17-44ef-bcf4-bef21d4a209f.gif)
+
 
