@@ -2,7 +2,7 @@
 
 ## README    
 
-# Thành viên
+# Thành viên NHÓM 19: 
 * Trần Long Dũng - 19021245
 * Chu Thành Tùng - 19021386
 * Bùi Đăng Nam Bình - 19021225
