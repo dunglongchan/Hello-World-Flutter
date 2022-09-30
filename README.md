@@ -28,6 +28,6 @@ https://drive.google.com/file/d/1fl2f6xaZQPA_brKqF2UYiZWjkbeo8hb-/view (link fil
 * Màn Home sử dụng Listview
 
 <GIF>
-![giphy](https://user-images.githubusercontent.com/62632444/193195385-0b37f6d5-5c17-44ef-bcf4-bef21d4a209f.gif)
+![giphy](https://user-images.githubusercontent.com/62632444/193201226-9ce2caa0-bf6a-4576-aea1-d5022397bb54.gif)
 
 
