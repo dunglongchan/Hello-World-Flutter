@@ -14,13 +14,13 @@
 
 ----
 
-# Week 2: TextField + Figma
-https://drive.google.com/file/d/18_UWvRmOJGlX50AhLSJNcfJaq__L8U_m/view?usp=sharing (link file MP4)
-https://drive.google.com/file/d/19eOUvO7IkJrKZTdvhCVcAh5SXR7EZV9e/view?usp=sharing (link file MOV)
+# Week 2: TextField + Figma + Hello World với tên riêng
+
 ----
 
 # Week 3: Demo giao diện đầu tiên
-https://drive.google.com/file/d/1fl2f6xaZQPA_brKqF2UYiZWjkbeo8hb-/view (link file GIF)
+![IMG_0708](https://user-images.githubusercontent.com/62632444/193206758-0523a60a-fdb4-44cd-8fc5-5b993c1a264f.gif)
+
 ----
 
 # Week 4: 
