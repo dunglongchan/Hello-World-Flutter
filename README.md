@@ -20,10 +20,12 @@ https://drive.google.com/file/d/19eOUvO7IkJrKZTdvhCVcAh5SXR7EZV9e/view?usp=shari
 https://drive.google.com/file/d/1fl2f6xaZQPA_brKqF2UYiZWjkbeo8hb-/view (link file GIF)
 
 ----
-# Week 3: Splash -> Login -> Home page
-Màn Splash delay 2s sau đó chuyển qua màn hình đăng nhập để đăng nhập
-Bấm button Xác nhận sẽ chuyển tới màn Home
-Màn Home sử dụng Listview
+# Week 3: 
+* Thay đổi Logo ứng dụng
+* Splash -> Login -> Home page
+* Màn Splash delay 2s sau đó chuyển qua màn hình đăng nhập để đăng nhập
+* Bấm button Xác nhận sẽ chuyển tới màn Home
+* Màn Home sử dụng Listview
 
 <GIF>
 ![giphy](https://user-images.githubusercontent.com/62632444/193195385-0b37f6d5-5c17-44ef-bcf4-bef21d4a209f.gif)
