@@ -19,5 +19,13 @@ https://drive.google.com/file/d/18_UWvRmOJGlX50AhLSJNcfJaq__L8U_m/view?usp=shari
 https://drive.google.com/file/d/19eOUvO7IkJrKZTdvhCVcAh5SXR7EZV9e/view?usp=sharing (link file MOV)
 https://drive.google.com/file/d/1fl2f6xaZQPA_brKqF2UYiZWjkbeo8hb-/view (link file GIF)
 
+----
+# Week 3: Splash -> Login -> Home page
+Màn Splash delay 2s sau đó chuyển qua màn hình đăng nhập để đăng nhập
+Bấm button Xác nhận sẽ chuyển tới màn Home
+Màn Home sử dụng Listview
+
+<GIF>
+![Alt Text](https://giphy.com/gifs/ljkw3fOodcBDGB485fa)
 
 
