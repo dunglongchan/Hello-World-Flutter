@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_color"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:layout_marginTop="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Nhập thông tin"
+        android:textSize="20sp"
+        android:textColor="@color/white"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Thông tin này dùng để xác thực và bảo vệ tài khoản của bạn tốt hơn"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:layout_marginHorizontal="60dp"
+        android:layout_marginTop="20dp"/>
+
+    <LinearLayout
+        android:layout_marginHorizontal="60dp"
+        android:paddingVertical="10dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/edt_backgr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập họ &amp; tên"
+            android:textSize="24sp"
+            android:textColor="#9E9E9E"
+            android:background="@null"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginHorizontal="60dp"
+        android:paddingVertical="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edt_backgr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập email"
+            android:textSize="24sp"
+            android:textColor="#9E9E9E"
+            android:background="@null"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_confirm"
+        android:layout_marginHorizontal="60dp"
+        android:paddingVertical="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_backgr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="XÁC NHẬN"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:background="@null"
+            android:gravity="center"/>
+    </LinearLayout>
+
+</LinearLayout>
