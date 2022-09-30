@@ -14,7 +14,7 @@
 
 ----
 
-# Week 2: TextField + Figma + Hello World với tên riêng
+# Week 2: Figma + Hello World với tên riêng
 
 ----
 
