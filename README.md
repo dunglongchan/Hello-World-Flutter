@@ -17,10 +17,13 @@
 # Week 2: TextField + Figma
 https://drive.google.com/file/d/18_UWvRmOJGlX50AhLSJNcfJaq__L8U_m/view?usp=sharing (link file MP4)
 https://drive.google.com/file/d/19eOUvO7IkJrKZTdvhCVcAh5SXR7EZV9e/view?usp=sharing (link file MOV)
-https://drive.google.com/file/d/1fl2f6xaZQPA_brKqF2UYiZWjkbeo8hb-/view (link file GIF)
-
 ----
-# Week 3: 
+
+# Week 3: Demo giao diện đầu tiên
+https://drive.google.com/file/d/1fl2f6xaZQPA_brKqF2UYiZWjkbeo8hb-/view (link file GIF)
+----
+
+# Week 4: 
 * Thay đổi Logo ứng dụng
 * Splash -> Login -> Home page
 * Màn Splash delay 2s sau đó chuyển qua màn hình đăng nhập để đăng nhập
