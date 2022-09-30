@@ -16,6 +16,8 @@
 
 # Week 2: Figma + Hello World với tên riêng
 
+https://www.figma.com/file/4cuFJfVI6p00AQvrP6V7zd/MOMO?node-id=0%3A1
+
 ----
 
 # Week 3: Demo giao diện đầu tiên
