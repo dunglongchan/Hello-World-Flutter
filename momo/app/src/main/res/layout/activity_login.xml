@@ -13,14 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Nhập thông tin"
+        android:text="@string/nh_p_th_ng_tin"
         android:textSize="20sp"
         android:textColor="@color/white"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Thông tin này dùng để xác thực và bảo vệ tài khoản của bạn tốt hơn"
+        android:text="@string/th_ng_tin_na_y_du_ng_xa_c_th_c_va_ba_o_v_ta_i_khoa_n_cu_a_ba_n_t_t_h_n"
         android:textColor="@color/white"
         android:textSize="13sp"
         android:layout_marginHorizontal="60dp"
@@ -36,11 +36,12 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhập họ &amp; tên"
+            android:hint="@string/nh_p_ho_amp_t_n"
             android:textSize="24sp"
             android:textColor="#9E9E9E"
             android:background="@null"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -53,7 +54,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhập email"
+            android:hint="@string/nh_p_email"
             android:textSize="24sp"
             android:textColor="#9E9E9E"
             android:background="@null"
@@ -71,7 +72,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="XÁC NHẬN"
+            android:text="@string/xa_c_nh_n"
             android:textSize="24sp"
             android:textColor="@color/white"
             android:background="@null"

@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Momo</string>
+    <string name="search">Search</string>
+    <string name="todo">TODO</string>
+    <string name="nh_p_th_ng_tin">Nhập thông tin</string>
+    <string name="th_ng_tin_na_y_du_ng_xa_c_th_c_va_ba_o_v_ta_i_khoa_n_cu_a_ba_n_t_t_h_n">Thông tin này dùng để xác thực và bảo vệ tài khoản của bạn tốt hơn</string>
+    <string name="xa_c_nh_n">XÁC NHẬN</string>
+    <string name="nh_p_email">Nhập email</string>
+    <string name="nh_p_ho_amp_t_n"><![CDATA[Nhập họ & tên]]></string>
+    <string name="qua_n_ly_ta_i_khoa_n">Quản lý tài khoản</string>
+    <string name="chuy_n_ti_n">Chuyển tiền</string>
+    <string name="chuy_n_ti_n_li_n_ng_n_h_ng">Chuyển tiền liên ngân hàng</string>
+    <string name="voucher">Voucher</string>
+    <string name="chat">Chat</string>
+    <string name="vi_cua_toi">Ví của tôi</string>
 </resources>
