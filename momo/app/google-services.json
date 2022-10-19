@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "982304644234-eils7uh7to3mqcitgm5n3q4hbv7bo389.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.momo",
+            "certificate_hash": "563e35d8e8c372b237ab26db0d9a658d0573fcc8"
+          }
+        },
+        {
           "client_id": "982304644234-hkib92dou2blh1nj8hbdk3t8s8ud0k44.apps.googleusercontent.com",
           "client_type": 3
         }

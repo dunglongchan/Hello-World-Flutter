@@ -8,75 +8,85 @@
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
-    <TextView
-        android:layout_marginTop="120dp"
+    <ImageView
+        android:id="@+id/iv_login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/nh_p_th_ng_tin"
-        android:textSize="20sp"
-        android:textColor="@color/white"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/th_ng_tin_na_y_du_ng_xa_c_th_c_va_ba_o_v_ta_i_khoa_n_cu_a_ba_n_t_t_h_n"
-        android:textColor="@color/white"
-        android:textSize="13sp"
-        android:layout_marginHorizontal="60dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_height="300dp" />
 
-    <LinearLayout
-        android:layout_marginHorizontal="60dp"
-        android:paddingVertical="10dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/edt_backgr"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/nh_p_ho_amp_t_n"
-            android:textSize="24sp"
-            android:textColor="#9E9E9E"
-            android:background="@null"
-            android:gravity="center"
-            android:autofillHints="" />
-    </LinearLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/custom_backgr"
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_marginHorizontal="60dp"
-        android:paddingVertical="10dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/edt_backgr"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/nh_p_email"
-            android:textSize="24sp"
-            android:textColor="#9E9E9E"
-            android:background="@null"
-            android:gravity="center"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_confirm"
-        android:layout_marginHorizontal="60dp"
-        android:paddingVertical="10dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/btn_backgr"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/xa_c_nh_n"
-            android:textSize="24sp"
-            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="MoMo xin chào!"
+            android:textSize="18sp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:text="Nhập số điện thoại để đăng ký hoặc đăng nhập"
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp"
             android:background="@null"
-            android:gravity="center"/>
-    </LinearLayout>
+            android:hint="@string/phone_number"
+            android:textColorHint="@android:color/black"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:layout_constraintTop_toBottomOf="@id/tv_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/english"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_input"
+                android:background="@null"
+                android:textColorHint="@color/black"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/custom_backgr2"
+            android:gravity="center"
+            android:paddingVertical="10dp"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </LinearLayout>
