@@ -34,4 +34,14 @@ https://www.figma.com/file/4cuFJfVI6p00AQvrP6V7zd/MOMO?node-id=0%3A1
 
 ![giphy](https://user-images.githubusercontent.com/62632444/193201226-9ce2caa0-bf6a-4576-aea1-d5022397bb54.gif)
 
+----
+
+# Week 5:
+* Xin quyền và mở Camera mặc định của máy
+* Hoàn thiện các màn hình đã vẽ trong Figma
+
+Do tệp lớn hơn 10MB nên chúng em để link gif tại đây ạ
+https://giphy.com/gifs/jGhfyZ2OkjmWTOYDuK
+
+
 

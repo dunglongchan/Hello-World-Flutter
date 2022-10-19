@@ -8,9 +8,12 @@ buildscript {
     }
     dependencies {
 
+<<<<<<< HEAD
     classpath 'com.google.gms:google-services:4.3.14'
         classpath 'com.android.tools.build:gradle:3.4.0'
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.2'
+=======
+>>>>>>> d0c49ab302a95e8438ac48914fcbabcd32151560
     }
 }
 

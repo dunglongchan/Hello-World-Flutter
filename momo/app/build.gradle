@@ -61,10 +61,13 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.14.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.1'
+<<<<<<< HEAD
 
     implementation 'com.google.firebase:firebase-config'
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-messaging'
     implementation 'com.google.firebase:firebase-crashlytics'
     implementation platform('com.google.firebase:firebase-bom:30.2.0')
+=======
+>>>>>>> d0c49ab302a95e8438ac48914fcbabcd32151560
 }
