@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Momo</string>
     <string name="search">Search</string>
     <string name="todo">TODO</string>
@@ -13,4 +13,14 @@
     <string name="voucher">Voucher</string>
     <string name="chat">Chat</string>
     <string name="vi_cua_toi">Ví của tôi</string>
+    <string name="explore_now">Khám phá ngay</string>
+    <string name="vietnamese">Việt</string>
+    <string name="english">Eng</string>
+    <string name="intro1">Chuyển tiền nhanh, thanh toán một chạm</string>
+    <string name="intro2">Tiêu dùng và sinh lời mỗi ngày với ví trả sau, túi thần tài!</string>
+    <string name="intro3">Vô vàn ưu đãi úp dụng ngay trên hóa đơn</string>
+    <string name="intro4">Ưu đãi thành viên, Thanh toán không giới hạn</string>
+    <string name="next">Tiếp tục</string>
+    <string name="momo_hello">MoMo xin chào!</string>
+    <string name="phone_number">Phone number</string>
 </resources>

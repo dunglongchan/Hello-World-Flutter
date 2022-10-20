@@ -16,7 +16,11 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+            if (MyApplication.getFirstOpen(this@SplashActivity)){
+                startActivity(Intent(this@SplashActivity, IntroActivity::class.java))
+            }else{
+                startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+            }
         }, 2000)
     }
 }
