@@ -43,5 +43,19 @@ https://www.figma.com/file/4cuFJfVI6p00AQvrP6V7zd/MOMO?node-id=0%3A1
 Do tệp lớn hơn 10MB nên chúng em để link gif tại đây ạ
 https://giphy.com/gifs/jGhfyZ2OkjmWTOYDuK
 
+# Week 6: 
+* Đăng nhập bằng Firebase thông qua số điện thoại và mã OTP
+* Hoàn thiện các Layout chính
+
+----
+
+# Week 7:
+* Kiểm thử mức độ bao phủ bằng YOYO
+
+![308010260_529091595708642_2855827236496903055_n](https://user-images.githubusercontent.com/62632444/197124246-b9bc25e1-de8c-4657-ae0d-87f718993362.png)
+
+* Kiểm thử Monket Testing với clicks = 500
+
+![300199828_4856544457807759_4109099745922782881_n](https://user-images.githubusercontent.com/62632444/197124338-8332e324-7dda-4e7f-9c78-036cf3b8a106.png)
 
 
