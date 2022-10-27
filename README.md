@@ -58,4 +58,13 @@ https://giphy.com/gifs/jGhfyZ2OkjmWTOYDuK
 
 ![300199828_4856544457807759_4109099745922782881_n](https://user-images.githubusercontent.com/62632444/197124338-8332e324-7dda-4e7f-9c78-036cf3b8a106.png)
 
+----
+
+# Week 8:
+* Require Network khi sử dụng ứng dụng
+* Sử dụng Firebase Auth, validate user trong vòng 15 phút không cần đăng nhập lại nếu đã đăng nhập thành công trước đó
+* update giao diện bên trong ứng dụng
+
+https://giphy.com/gifs/zvXnEAFdlNnFBfEvpd
+(Do tập GIF lớn hơn 10MB nên chúng em đính kèm link tại đây ạ)
 
