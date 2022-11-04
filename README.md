@@ -67,4 +67,31 @@ https://giphy.com/gifs/jGhfyZ2OkjmWTOYDuK
 
 https://giphy.com/gifs/zvXnEAFdlNnFBfEvpd
 (Do tập GIF lớn hơn 10MB nên chúng em đính kèm link tại đây ạ)
+----
+# Week 9: Unit TEST
+
+* Kiểm thử Unit test run with com
+
+![image](https://user-images.githubusercontent.com/62632444/199882613-8ddc22eb-6e05-4ab6-ae99-3af7f4c56691.png)
+
+* Kiểm thử Unit test run with coverage
+
+![image](https://user-images.githubusercontent.com/62632444/199882667-d81ede68-344a-4d64-a755-4f224d651104.png)
+
+* Khi tiến hành kiểm thử Coverage test, hệ thống báo đã passed 9 test case, nhưng coverage lại báo project files out of date và cho kết quả cov 0%
+* Nhóm chúng em tiến hành tìm hiểu trên các diễn đàn trên mạng với lỗi trên, sau khi tìm hiểu nhóm nhận thấy đây là một lỗi mới với kotlin và chưa thấy có hướng giải quyết và cũng đã thấy nhiều trường hợp tương tự trên các diễn đàn
+
+* Các diễn đàn nhóm đã tham khảo
+* https://youtrack.jetbrains.com/issue/KTIJ-981
+* https://youtrack.jetbrains.com/issue/IDEA-194073/Gradle-Run-with-Coverage-triggers-IDEA-JPS-build-Delegate-IDE-buildrun-actions-to-Gradle-setting-is-ignored#focus=Comments-27-6180937.0-0
+* https://stackoverflow.com/questions/73273807/android-studio-coverage-tool-says-that-project-is-out-of-date
+
+* Kết quả nhận được khi chạy
+![image](https://user-images.githubusercontent.com/62632444/199885145-d0d90577-e816-4805-9cf6-10ba29a6c7f2.png)
+
+
+* Nhóm sẽ tiếp tục tìm hiểu, và thực hiện lại Unit test 
+
+
+
 
