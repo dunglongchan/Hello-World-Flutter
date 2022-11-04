@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit
 
 class IntroActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityIntroBinding
+     lateinit var binding: ActivityIntroBinding
     private var adapter: IntroAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,12 +49,15 @@ class IntroActivity : AppCompatActivity() {
         }
 
         binding.tvNext.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe() {
-            if (!Common.isNetworkWorking(this@IntroActivity)) {
-                Common.openRequireNetworkDialog(this@IntroActivity)
-                return@subscribe
-            }
-            startActivity(Intent(this@IntroActivity, LoginActivity::class.java))
-            finish()
+            startToNewActivity(Common.isNetworkWorking(this@IntroActivity))
         }
+    }
+
+    fun startToNewActivity(isNetworkConnected: Boolean) {
+        if (!isNetworkConnected) {
+            Common.openRequireNetworkDialog(this@IntroActivity)
+        }
+        startActivity(Intent(this@IntroActivity, LoginActivity::class.java))
+        finish()
     }
 }

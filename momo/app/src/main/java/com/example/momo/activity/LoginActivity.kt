@@ -16,6 +16,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var number: String
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -24,24 +25,30 @@ class LoginActivity : AppCompatActivity() {
 
         binding.tvNext.setOnClickListener {
             number = binding.textInput.text!!.trim().toString()
-            if (number.isNotEmpty()) {
-                if (number.length == 9) {
-                    number = "+84$number"
-                    val options = PhoneAuthOptions.newBuilder(auth)
-                        .setPhoneNumber(number)       // Phone number to verify
-                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                        .setActivity(this)                 // Activity (for callback binding)
-                        .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
-                        .build()
-                    PhoneAuthProvider.verifyPhoneNumber(options)
+            if (!checkNumberValidate(number)) return@setOnClickListener
+        }
+    }
 
-                } else {
-                    Toast.makeText(this, "Please Enter correct Number", Toast.LENGTH_SHORT).show()
-                }
+    fun checkNumberValidate(number1: String) :Boolean {
+        if (number1.isNotEmpty()) {
+            if (number1.length == 9) {
+                val number2 = "+84$number1"
+                val options = PhoneAuthOptions.newBuilder(auth)
+                    .setPhoneNumber(number2)       // Phone number to verify
+                    .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                    .setActivity(this)                 // Activity (for callback binding)
+                    .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
+                    .build()
+                PhoneAuthProvider.verifyPhoneNumber(options)
+                return true
             } else {
-                Toast.makeText(this, "Please Enter Number", Toast.LENGTH_SHORT).show()
-
+                Toast.makeText(this, "Please Enter correct Number", Toast.LENGTH_SHORT).show()
+                return false
             }
+        } else {
+            Toast.makeText(this, "Please Enter Number", Toast.LENGTH_SHORT).show()
+            return false
+
         }
     }
 
@@ -50,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Toast.makeText(this , "Authenticate Successfully" , Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Authenticate Successfully", Toast.LENGTH_SHORT).show()
                     sendToMain()
                 } else {
                     // Sign in failed, display a message and update the UI
@@ -63,9 +70,11 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
-    private fun sendToMain(){
-        startActivity(Intent(this , MainActivity::class.java))
+    private fun sendToMain() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
+
     private val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
         override fun onVerificationCompleted(credential: PhoneAuthCredential) {
@@ -100,19 +109,21 @@ class LoginActivity : AppCompatActivity() {
             // now need to ask the user to enter the code and then construct a credential
             // by combining the code with a verification ID.
             // Save verification ID and resending token so we can use them later
-            val intent = Intent(this@LoginActivity , AuthenticActivity::class.java)
-            intent.putExtra("OTP" , verificationId)
-            intent.putExtra("resendToken" , token)
-            intent.putExtra("phoneNumber" , number)
+            val intent = Intent(this@LoginActivity, AuthenticActivity::class.java)
+            intent.putExtra("OTP", verificationId)
+            intent.putExtra("resendToken", token)
+            intent.putExtra("phoneNumber", number)
             startActivity(intent)
+            finish()
         }
     }
 
 
     override fun onStart() {
         super.onStart()
-        if (auth.currentUser != null){
-            startActivity(Intent(this , MainActivity::class.java))
+        if (auth.currentUser != null) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 }

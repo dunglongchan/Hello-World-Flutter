@@ -161,6 +161,7 @@ class AuthenticActivity : AppCompatActivity() {
 
     private fun sendToMain() {
         startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     private fun addTextChangeListener() {
