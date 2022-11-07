@@ -31,4 +31,12 @@ class IntroActivityTest {
 //    )
 
 
+//    @Test
+//    fun testIntro() {
+//        val myObject = mock(IntroActivity::class.java)
+////        val v: View = myObject.findViewById<TextView>(R.id.tv_next)
+////        myObject.binding.tvNext.performClick()performClick
+//        assertNull(myObject.binding.tvNext)
+//        assertTrue(myObject.isActivityTransitionRunning);
+//    }
 }

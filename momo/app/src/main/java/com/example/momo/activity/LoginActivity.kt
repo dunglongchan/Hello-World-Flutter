@@ -42,11 +42,11 @@ class LoginActivity : AppCompatActivity() {
                 PhoneAuthProvider.verifyPhoneNumber(options)
                 return true
             } else {
-                Toast.makeText(this, "Please Enter correct Number", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "Please Enter correct Number", Toast.LENGTH_SHORT).show()
                 return false
             }
         } else {
-            Toast.makeText(this, "Please Enter Number", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "Please Enter Number", Toast.LENGTH_SHORT).show()
             return false
 
         }
