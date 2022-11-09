@@ -1,8 +1,13 @@
 package com.example.momo
 
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class
 import org.junit.Test
 
 import org.junit.Assert.*
+import org.junit.Rule
+import org.junit.rules.TestRule
+import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
 
 /**
  * Example local unit test, which will execute on the development machine (host).

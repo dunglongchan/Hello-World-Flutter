@@ -11,7 +11,6 @@ import android.os.Bundle
 import android.os.StrictMode
 import android.text.TextUtils
 import android.util.DisplayMetrics
-import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
 
