@@ -24,7 +24,9 @@ class LoginActivityTest {
         assertFalse(loginActivity.checkNumberValidate(""))
         assertFalse(loginActivity.checkNumberValidate("1012345116789"))
         assertFalse(loginActivity.checkNumberValidate("10156789"))
+        assertFalse(loginActivity.checkNumberValidate("112233445566"))
     }
+
 
     @Test
     fun signWithPhoneAuthCredential(){

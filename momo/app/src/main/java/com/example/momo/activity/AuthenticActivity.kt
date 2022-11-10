@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.momo.R
+import com.example.momo.common.Constant
 import com.example.momo.databinding.ActivityAuthenticBinding
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -24,7 +25,7 @@ class AuthenticActivity : AppCompatActivity() {
     private lateinit var OTP: String
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var phoneNumber: String
-
+    private var isUserSign = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,7 @@ class AuthenticActivity : AppCompatActivity() {
         OTP = intent.getStringExtra("OTP").toString()
         resendToken = intent.getParcelableExtra("resendToken")!!
         phoneNumber = intent.getStringExtra("phoneNumber")!!
+        isUserSign = intent.getBooleanExtra(Constant.IS_USER_SIGNED, false)
 
         auth = FirebaseAuth.getInstance()
 
@@ -49,6 +51,11 @@ class AuthenticActivity : AppCompatActivity() {
             resendVerificationCode()
             resendOTPTvVisibility()
         }
+
+        if (isUserSign) {
+            binding.title.text = "Put OTP to Logging in"
+        } else binding.title.text = "Put OTP to Signing up"
+
 
         binding.verifyOTPBtn.setOnClickListener {
             //collect otp from all the edit texts
@@ -160,7 +167,19 @@ class AuthenticActivity : AppCompatActivity() {
     }
 
     private fun sendToMain() {
-        startActivity(Intent(this, MainActivity::class.java))
+        val intent = Intent()
+        if (isUserSign) {
+            val date = Constant.userModel.security[Constant.TYPE]
+            Log.e("====", date.toString())
+            Log.e("====", date.toString())
+
+            intent.setClass(this, EnterPassWordActivity::class.java)
+                .putExtra(Constant.IS_USER_SIGNED, isUserSign)
+//                .putExtra(Constant.TYPE, passType)
+        } else {
+            intent.setClass(this, EnterPassWordActivity::class.java)
+        }
+        startActivity(intent)
         finish()
     }
 

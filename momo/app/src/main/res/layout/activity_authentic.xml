@@ -25,8 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Resend OTP"
-        android:textSize="16sp"
         android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/verifyOTPBtn"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
@@ -38,8 +38,8 @@
         android:background="@drawable/edit_text_bg"
         android:ems="10"
         android:gravity="center"
-        android:inputType="number"
         android:hint="0"
+        android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
@@ -65,9 +65,9 @@
         android:layout_height="45dp"
         android:background="@drawable/edit_text_bg"
         android:ems="10"
-        android:inputType="number"
         android:gravity="center"
         android:hint="0"
+        android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/otpEditText4"
         app:layout_constraintHorizontal_bias="0.5"
@@ -80,9 +80,9 @@
         android:layout_height="45dp"
         android:background="@drawable/edit_text_bg"
         android:ems="10"
-        android:inputType="number"
         android:gravity="center"
         android:hint="0"
+        android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/otpEditText5"
         app:layout_constraintHorizontal_bias="0.5"
@@ -96,9 +96,9 @@
         android:layout_height="45dp"
         android:background="@drawable/edit_text_bg"
         android:ems="10"
-        android:inputType="number"
         android:gravity="center"
         android:hint="0"
+        android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/otpEditText6"
         app:layout_constraintHorizontal_bias="0.5"
@@ -114,9 +114,9 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/edit_text_bg"
         android:ems="10"
-        android:inputType="number"
         android:gravity="center"
         android:hint="0"
+        android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/otpEditText5"
@@ -146,6 +146,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/img3" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Put OTP to Logging in"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/otpProgressBar"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <ProgressBar
         android:id="@+id/otpProgressBar"

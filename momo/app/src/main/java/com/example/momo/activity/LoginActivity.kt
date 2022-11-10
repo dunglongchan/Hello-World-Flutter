@@ -3,18 +3,21 @@ package com.example.momo.activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.momo.common.Constant
 import com.example.momo.databinding.ActivityLoginBinding
+import com.example.momo.model.UserModel
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.concurrent.TimeUnit
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var number: String
+    private var isUserSign = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,52 +29,82 @@ class LoginActivity : AppCompatActivity() {
         binding.tvNext.setOnClickListener {
             number = binding.textInput.text!!.trim().toString()
             if (!checkNumberValidate(number)) return@setOnClickListener
+            if (number.length == 10) number = number.substring(1)
+            signUp()
         }
     }
 
-    fun checkNumberValidate(number1: String) :Boolean {
-        if (number1.isNotEmpty()) {
-            if (number1.length == 9) {
-                val number2 = "+84$number1"
-                val options = PhoneAuthOptions.newBuilder(auth)
-                    .setPhoneNumber(number2)       // Phone number to verify
-                    .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                    .setActivity(this)                 // Activity (for callback binding)
-                    .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
-                    .build()
-                PhoneAuthProvider.verifyPhoneNumber(options)
-                return true
-            } else {
-//                Toast.makeText(this, "Please Enter correct Number", Toast.LENGTH_SHORT).show()
-                return false
+    fun checkNumberValidate(number1: String): Boolean {
+        return if (number1.length == 9 || number1.length == 10) {
+            !(number1.length == 10 && number1.substring(0, 1) != "0")
+        } else false
+    }
+
+    private fun sentOTP(number1: String) {
+        val number2 = "+84$number1"
+        val options = PhoneAuthOptions.newBuilder(auth)
+            .setPhoneNumber(number2)       // Phone number to verify
+            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+            .setActivity(this)                 // Activity (for callback binding)
+            .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
+            .build()
+        PhoneAuthProvider.verifyPhoneNumber(options)
+    }
+
+    private fun signUp() {
+
+        sentOTP(number)
+
+        val userID = "user_"
+        var userModel: UserModel
+        val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
+        firestore.collection("user_data")
+            .get()
+            .addOnSuccessListener { r ->
+                for (document in r) {
+                    if (document.id == userID + "84$number") {
+                        userModel = Constant.castDataToUserModel(document.data)
+                        Constant.userModel = userModel
+                        isUserSign = true
+                        break
+                    }
+                }
             }
-        } else {
-//            Toast.makeText(this, "Please Enter Number", Toast.LENGTH_SHORT).show()
-            return false
-
+            .addOnFailureListener {
+                print(it.message)
+            }
+        if (userID == "user_") {
+            userModel = UserModel(userID + "84$number")
+            Constant.userModel = userModel
         }
     }
+
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Toast.makeText(this, "Authenticate Successfully", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this, "Authenticate Successfully", Toast.LENGTH_SHORT).show()
                     sendToMain()
                 } else {
                     // Sign in failed, display a message and update the UI
                     Log.d("TAG", "signInWithPhoneAuthCredential: ${task.exception.toString()}")
-                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        // The verification code entered was invalid
-                    }
+//                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
+//                        // The verification code entered was invalid
+//                    }
                     // Update UI
                 }
             }
     }
 
     private fun sendToMain() {
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(
+            Intent(this, AuthenticActivity::class.java).putExtra(
+                Constant.IS_USER_SIGNED,
+                isUserSign
+            )
+        )
         finish()
     }
 
@@ -112,18 +145,11 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this@LoginActivity, AuthenticActivity::class.java)
             intent.putExtra("OTP", verificationId)
             intent.putExtra("resendToken", token)
+            intent.putExtra(Constant.IS_USER_SIGNED, isUserSign)
             intent.putExtra("phoneNumber", number)
             startActivity(intent)
-            finish()
+//            finish()
         }
     }
 
-
-    override fun onStart() {
-        super.onStart()
-        if (auth.currentUser != null) {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }
-    }
 }
