@@ -92,6 +92,24 @@ https://giphy.com/gifs/zvXnEAFdlNnFBfEvpd
 
 * Nhóm sẽ tiếp tục tìm hiểu, và thực hiện lại Unit test 
 
+----
+# Week 10: Fix bug và làm thêm database
+
+* Nhóm đã tìm ra hướng giải quyết Cov Report với kotlin, thêm testOption on Build.gradle (module level) của app sau đó config và đã đạt được kết quả
+* Đây là Cov report của nhóm tuần này, những tuần tới nhóm sẽ tiếp tục cải thiện test case và update ứng dụng
+
+![image](https://user-images.githubusercontent.com/62632444/201156969-aa7a5ebd-262b-4062-a02d-a1a46af8f7e9.png)
+![image](https://user-images.githubusercontent.com/62632444/201157381-f2724245-9d97-430c-ac0f-8ff548c8be3a.png)
+
+
+* Thêm database và sử dụng Firestore, tạo bảng data trên Firestore, tạo cái model để lại dữ liệu trả về từ Firestore
+
+![image](https://user-images.githubusercontent.com/62632444/201157066-11c52cf6-311a-44fa-a7c1-468f18104ca1.png)
+
+
+* Đăng kí vơi số điện thoại
+* Update thêm màn đăng kí
+
 
 
 
