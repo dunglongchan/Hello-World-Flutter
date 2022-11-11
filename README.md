@@ -102,13 +102,24 @@ https://giphy.com/gifs/zvXnEAFdlNnFBfEvpd
 ![image](https://user-images.githubusercontent.com/62632444/201157381-f2724245-9d97-430c-ac0f-8ff548c8be3a.png)
 
 
-* Thêm database và sử dụng Firestore, tạo bảng data trên Firestore, tạo cái model để lại dữ liệu trả về từ Firestore
+* Thêm database và sử dụng Firestore, tạo bảng data trên Firestore, tạo cái model để lấy dữ liệu trả về từ Firestore
 
 ![image](https://user-images.githubusercontent.com/62632444/201157066-11c52cf6-311a-44fa-a7c1-468f18104ca1.png)
 
 
 * Đăng kí vơi số điện thoại
 * Update thêm màn đăng kí
+* Các màn hình nhóm đã làm
+![image](https://user-images.githubusercontent.com/62632444/201278112-3020b20e-b06d-46a0-b765-d204445961d4.png)
+![image](https://user-images.githubusercontent.com/62632444/201278145-84275a30-7643-4d54-8339-c8690fec01ff.png)
+![image](https://user-images.githubusercontent.com/62632444/201278159-c8e6e1fd-bdf6-403c-a988-80b5b2f4dc7f.png)
+![image](https://user-images.githubusercontent.com/62632444/201278203-39379703-21b4-4ab4-b0a3-8036a02cec82.png)
+![image](https://user-images.githubusercontent.com/62632444/201278253-10bc709f-80bb-4e0b-aadb-94cc3aa82ebe.png)
+![image](https://user-images.githubusercontent.com/62632444/201278227-f9c7473a-3b7d-4f29-912c-5e69b6265fd8.png)
+
+ 
+
+
 
 
 
