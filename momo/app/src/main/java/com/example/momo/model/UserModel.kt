@@ -3,17 +3,17 @@ package com.example.momo.model
 import com.example.momo.common.Constant
 
 data class UserModel(
-    val user_id: String,
-    val avatar: String,
-    val name: String,
-    val information: Map<String, Any>,
-    val security: Map<String, Any>
+    var user_id: String,
+    var avatar: String,
+    var name: String,
+    var information: MutableMap<String, Any>,
+    var security: MutableMap<String, Any>
 ) {
     constructor(user_id: String) : this(
         user_id,
         "",
         "",
-        mapOf(
+        mutableMapOf(
             Constant.ADDRESS to "",
             Constant.DOB to "",
             Constant.EMAIL to "",
@@ -21,10 +21,12 @@ data class UserModel(
             Constant.JOB to "",
             Constant.RELATIONSHIP to ""
         ),
-        mapOf(
-            Constant.PASSWORD to mapOf(Constant.PASSWORD to "", Constant.TYPE to 0),
-            Constant.IDENTIFY_CARD to mapOf(Constant.CARD_NUMBER to "", Constant.VERIFIED to false),
-            Constant.BALANCE to ""
+        mutableMapOf(
+            Constant.BALANCE to "",
+            Constant.PASSWORD to "",
+            Constant.TYPE to 0,
+            Constant.IDENTIFY_CARD to "",
+            Constant.VERIFIED to false
         )
     )
 }

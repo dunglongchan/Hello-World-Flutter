@@ -25,6 +25,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activity.NewProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CreatePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.AuthenticActivity"
             android:exported="false" />
         <activity

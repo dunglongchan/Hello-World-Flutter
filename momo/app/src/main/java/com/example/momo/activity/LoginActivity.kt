@@ -1,16 +1,24 @@
 package com.example.momo.activity
 
+import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.momo.common.Constant
 import com.example.momo.databinding.ActivityLoginBinding
-import com.example.momo.model.UserModel
+import com.example.momo.databinding.DialogRegisterBinding
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import com.google.firebase.firestore.FirebaseFirestore
+import com.jakewharton.rxbinding3.view.clicks
 import java.util.concurrent.TimeUnit
 
 class LoginActivity : AppCompatActivity() {
@@ -30,8 +38,12 @@ class LoginActivity : AppCompatActivity() {
             number = binding.textInput.text!!.trim().toString()
             if (!checkNumberValidate(number)) return@setOnClickListener
             if (number.length == 10) number = number.substring(1)
+            binding.tvNext.isClickable = false
+            binding.textInput.isClickable = false
+            binding.otpProgressBar.visibility = View.VISIBLE
             signUp()
         }
+
     }
 
     fun checkNumberValidate(number1: String): Boolean {
@@ -51,31 +63,64 @@ class LoginActivity : AppCompatActivity() {
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
+    @SuppressLint("CheckResult")
     private fun signUp() {
+        searchForUser()
+    }
 
-        sentOTP(number)
-
-        val userID = "user_"
-        var userModel: UserModel
-        val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
-        firestore.collection("user_data")
+    private fun searchForUser() {
+        FirebaseFirestore.getInstance().collection("user_data")
+            .whereEqualTo("user_id", "user_84$number")
             .get()
             .addOnSuccessListener { r ->
-                for (document in r) {
-                    if (document.id == userID + "84$number") {
-                        userModel = Constant.castDataToUserModel(document.data)
-                        Constant.userModel = userModel
-                        isUserSign = true
-                        break
-                    }
+                if (r.isEmpty) {
+                    isUserSign = false
+                    showDialogRegister()
+                } else {
+                    for (document in r) Constant.userModel =
+                        Constant.castDataToUserModel(document.data)
+                    isUserSign = true
+                    sentOTP(number)
                 }
             }
             .addOnFailureListener {
-                print(it.message)
+                Log.e("====", it.message.toString())
             }
-        if (userID == "user_") {
-            userModel = UserModel(userID + "84$number")
-            Constant.userModel = userModel
+    }
+
+    @SuppressLint("CheckResult")
+    private fun showDialogRegister() {
+        binding.otpProgressBar.visibility = View.GONE
+        val dialog = Dialog(this@LoginActivity)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = DialogRegisterBinding.inflate(layoutInflater)
+        dialog.setContentView(dialogBinding.root)
+
+        val window = dialog.window!!
+        window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        window.setLayout(
+            WindowManager.LayoutParams.WRAP_CONTENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        dialog.setCancelable(true)
+        dialog.show()
+
+        dialogBinding.tvTitle.text = "Đăng ký MoMo với +84-$number"
+
+        dialogBinding.tvChangeNumber.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
+            number = ""
+            binding.textInput.text?.clear()
+            dialog.dismiss()
+        }
+
+        dialogBinding.tvConfirm.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
+            sentOTP(number)
+            dialog.dismiss()
+        }
+
+        dialog.setOnDismissListener {
+            binding.tvNext.isClickable = true
+            binding.textInput.isClickable = true
         }
     }
 
@@ -84,16 +129,9 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-//                    Toast.makeText(this, "Authenticate Successfully", Toast.LENGTH_SHORT).show()
                     sendToMain()
                 } else {
-                    // Sign in failed, display a message and update the UI
                     Log.d("TAG", "signInWithPhoneAuthCredential: ${task.exception.toString()}")
-//                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
-//                        // The verification code entered was invalid
-//                    }
-                    // Update UI
                 }
             }
     }
@@ -111,44 +149,43 @@ class LoginActivity : AppCompatActivity() {
     private val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
         override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-            // This callback will be invoked in two situations:
-            // 1 - Instant verification. In some cases the phone number can be instantly
-            //     verified without needing to send or enter a verification code.
-            // 2 - Auto-retrieval. On some devices Google Play services can automatically
-            //     detect the incoming verification SMS and perform verification without
-            //     user action.
-            signInWithPhoneAuthCredential(credential)
+//            signInWithPhoneAuthCredential(credential)
         }
 
         override fun onVerificationFailed(e: FirebaseException) {
-            // This callback is invoked in an invalid request for verification is made,
-            // for instance if the the phone number format is not valid.
-
             if (e is FirebaseAuthInvalidCredentialsException) {
-                // Invalid request
                 Log.d("TAG", "onVerificationFailed: ${e.toString()}")
             } else if (e is FirebaseTooManyRequestsException) {
-                // The SMS quota for the project has been exceeded
                 Log.d("TAG", "onVerificationFailed: ${e.toString()}")
             }
-            // Show a message and update the UI
         }
 
         override fun onCodeSent(
             verificationId: String,
             token: PhoneAuthProvider.ForceResendingToken
         ) {
-            // The SMS verification code has been sent to the provided phone number, we
-            // now need to ask the user to enter the code and then construct a credential
-            // by combining the code with a verification ID.
-            // Save verification ID and resending token so we can use them later
-            val intent = Intent(this@LoginActivity, AuthenticActivity::class.java)
-            intent.putExtra("OTP", verificationId)
-            intent.putExtra("resendToken", token)
-            intent.putExtra(Constant.IS_USER_SIGNED, isUserSign)
-            intent.putExtra("phoneNumber", number)
-            startActivity(intent)
-//            finish()
+            if (isUserSign) {
+                val intent = Intent(this@LoginActivity, AuthenticActivity::class.java)
+                intent.putExtra("OTP", verificationId)
+                intent.putExtra("resendToken", token)
+                intent.putExtra("phoneNumber", number)
+                startActivity(intent)
+                finish()
+            } else {
+                val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+                intent.putExtra("OTP", verificationId)
+                intent.putExtra("resendToken", token)
+                intent.putExtra("phoneNumber", number)
+                startActivityForResult(intent, 101)
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 101) {
+            number = ""
+            binding.textInput.text?.clear()
         }
     }
 

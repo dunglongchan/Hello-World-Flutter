@@ -7,6 +7,7 @@ import java.util.*
 
 class Constant {
     companion object {
+        const val NATIONAL = "national"
         const val NAME = "name"
         const val AVATAR = "avatar"
         const val INFORMATION = "information"
@@ -37,16 +38,14 @@ class Constant {
         const val CONVERSATION_MODEL = 103
         const val IS_USER_SIGNED = "is_user_signed"
         const val GET_MODEL = "get_model"
-        const val PASSWORD_TYPE = "password_type"
-
-        lateinit var userModel: UserModel
+        var userModel: UserModel = UserModel("")
 
         fun castDataToUserModel(data: MutableMap<String, Any>): UserModel {
             var name = ""
             var user_id = ""
             var avatar = ""
-            var information: HashMap<String, Objects> = HashMap()
-            var security: HashMap<String, Objects> = HashMap()
+            var information: MutableMap<String, Any> = HashMap()
+            var security: MutableMap<String, Any> = HashMap()
 
             for (i in data) {
                 when (i.key) {
@@ -60,10 +59,10 @@ class Constant {
                         user_id = i.value.toString()
                     }
                     SECURITY -> {
-                        security = i.value as HashMap<String, Objects>
+                        security = i.value as MutableMap<String, Any>
                     }
                     INFORMATION -> {
-                        information = i.value as HashMap<String, Objects>
+                        information = i.value as MutableMap<String, Any>
                     }
                 }
             }
