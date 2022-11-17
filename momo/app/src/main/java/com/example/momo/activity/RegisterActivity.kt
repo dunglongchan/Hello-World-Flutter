@@ -1,6 +1,10 @@
 package com.example.momo.activity
 
+import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -8,27 +12,33 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.momo.R
 import com.example.momo.common.Constant
-import com.example.momo.databinding.ActivityAuthenticBinding
+import com.example.momo.databinding.ActivityRegisterBinding
+import com.example.momo.databinding.DialogChangeNumberBinding
+import com.example.momo.model.UserModel
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
+import com.jakewharton.rxbinding3.view.clicks
 import java.util.concurrent.TimeUnit
 
-class AuthenticActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAuthenticBinding
+    private lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var OTP: String
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var phoneNumber: String
+    private var wrongCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAuthenticBinding.inflate(layoutInflater)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         OTP = intent.getStringExtra("OTP").toString()
@@ -40,8 +50,10 @@ class AuthenticActivity : AppCompatActivity() {
         setupView()
     }
 
+    @SuppressLint("CheckResult")
     private fun setupView() {
-        binding.otpProgressBar.visibility = View.INVISIBLE
+
+        binding.tvContent.text = "Mã xác thực 6 số đã được gửi đến 84$phoneNumber"
 
         binding.otpEditText1.requestFocus()
         addTextChangeListener()
@@ -50,6 +62,10 @@ class AuthenticActivity : AppCompatActivity() {
         binding.resendTextView.setOnClickListener {
             resendVerificationCode()
             resendOTPTvVisibility()
+        }
+
+        binding.tvChangeNumber.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
+            finish()
         }
 
         binding.verifyOTPBtn.setOnClickListener {
@@ -62,7 +78,6 @@ class AuthenticActivity : AppCompatActivity() {
                     val credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(
                         OTP, typedOTP
                     )
-                    binding.otpProgressBar.visibility = View.VISIBLE
                     signInWithPhoneAuthCredential(credential)
                 } else {
                     Toast.makeText(this, "Please Enter Correct OTP", Toast.LENGTH_SHORT).show()
@@ -112,7 +127,6 @@ class AuthenticActivity : AppCompatActivity() {
             } else if (e is FirebaseTooManyRequestsException) {
                 Log.d("TAG", "onVerificationFailed: ${e.toString()}")
             }
-            binding.otpProgressBar.visibility = View.VISIBLE
         }
 
         override fun onCodeSent(
@@ -132,21 +146,50 @@ class AuthenticActivity : AppCompatActivity() {
                     sendToMain()
                 } else {
                     // Sign in failed, display a message and update the UI
-                    Log.d("TAG", "signInWithPhoneAuthCredential: ${task.exception.toString()}")
-                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
+//                    Log.d("TAG", "signInWithPhoneAuthCredential: ${task.exception.toString()}")
+//                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
+//                    }
+                    wrongCount++
+                    binding.tvError.text =
+                        "Mã xác thực không chính xác, bạn còn ${3 - wrongCount} lần thử"
+                    if (wrongCount > 2) {
+                        showErrorDialog()
                     }
                 }
-                binding.otpProgressBar.visibility = View.VISIBLE
             }
     }
 
-    private fun sendToMain() {
-        val intent = Intent()
-        val password = Constant.userModel.security[Constant.PASSWORD].toString()
+    @SuppressLint("CheckResult")
+    private fun showErrorDialog() {
+        val dialog = Dialog(this@RegisterActivity)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = DialogChangeNumberBinding.inflate(layoutInflater)
+        dialog.setContentView(dialogBinding.root)
 
-        intent.setClass(this, EnterPassWordActivity::class.java)
-            .putExtra(Constant.PASSWORD, password)
-        startActivity(intent)
+        val window = dialog.window!!
+        window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        window.setLayout(
+            WindowManager.LayoutParams.WRAP_CONTENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        dialog.setCancelable(true)
+        dialog.show()
+
+        dialogBinding.tvCancel.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
+            dialog.dismiss()
+        }
+
+        dialogBinding.tvConfirm.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
+            dialog.dismiss()
+            finish()
+        }
+
+
+    }
+
+    private fun sendToMain() {
+        Constant.userModel = UserModel("user_84$phoneNumber")
+        startActivity(Intent(this, CreatePasswordActivity::class.java))
         finish()
     }
 

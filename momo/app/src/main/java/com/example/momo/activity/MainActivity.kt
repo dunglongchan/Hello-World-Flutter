@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.momo.fragment.QrCodeFragment
 import com.example.momo.R
-import com.example.momo.ViewPagerAdapter
+import com.example.momo.adapter.ViewPagerAdapter
 import com.example.momo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

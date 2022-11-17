@@ -7,7 +7,12 @@ import android.graphics.drawable.ColorDrawable
 import android.net.wifi.WifiManager
 import android.widget.TextView
 import com.example.momo.R
+import com.example.momo.model.ConversationModel
+import com.example.momo.model.TransactionModel
+import com.example.momo.model.UserModel
+import com.google.gson.Gson
 import com.vapp.admoblibrary.ads.AdmodUtils
+import java.io.IOException
 
 class Common {
     companion object {
@@ -33,5 +38,30 @@ class Common {
             dialog.show()
         }
 
+        fun modelToJson(obj: Any?): String? {
+            return Gson().toJson(obj)
+        }
+
+        fun jsonToModel(str: String?, i: Int): Any? {
+            val gson = Gson()
+            try {
+                return when (i) {
+                    Constant.TRANSACTION_MODEL -> {
+                        gson.fromJson(str, TransactionModel::class.java)
+                    }
+                    Constant.CONVERSATION_MODEL -> {
+                        gson.fromJson(str, ConversationModel::class.java)
+                    }
+                    else -> {
+                        gson.fromJson(str, UserModel::class.java)
+
+                    }
+                }
+            }catch (e: IOException){
+                print(e.message)
+                return null
+            }
+
+        }
     }
 }

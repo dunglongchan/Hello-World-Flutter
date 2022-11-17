@@ -10,8 +10,8 @@
         android:title="Voucher"/>
     <item
         android:id="@+id/qrcode"
-        android:icon="@drawable/ic_qr_icoon"
-        android:title="Mã QR"/>
+        android:icon="@drawable/ic_history2"
+        android:title="lịch sử GD"/>
     <item
         android:id="@+id/chat"
         android:icon="@drawable/ic_box_icon"
