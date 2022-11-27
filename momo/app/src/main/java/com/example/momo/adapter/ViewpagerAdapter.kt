@@ -1,4 +1,4 @@
-package com.example.momo
+package com.example.momo.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
