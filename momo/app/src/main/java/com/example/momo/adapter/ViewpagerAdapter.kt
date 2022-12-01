@@ -14,7 +14,7 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
     override fun createFragment(position: Int): Fragment {
         when (position) {
             1 -> return VoucherFragment()
-            2 -> return QrCodeFragment()
+            2 -> return TransactionHistoryFragment()
             3 -> return ChatBoxFragment()
             4 -> return ProfileFragment()
             else -> return HomeFragment()

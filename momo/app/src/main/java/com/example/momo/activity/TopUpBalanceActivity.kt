@@ -8,9 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.momo.adapter.BankAcountAdapter
 import com.example.momo.common.Constant
+import com.example.momo.database.AppDataBase
+import com.example.momo.database.Transaction
 import com.example.momo.databinding.ActivityTopUpBalanceBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import com.jakewharton.rxbinding3.view.clicks
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 class TopUpBalanceActivity : AppCompatActivity() {
@@ -18,12 +22,15 @@ class TopUpBalanceActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTopUpBalanceBinding
     private var bankAccount = ""
     private var balance = Constant.userModel.security[Constant.BALANCE] as Long
+    private lateinit var appDataBase: AppDataBase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityTopUpBalanceBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        appDataBase = AppDataBase.getAppDatabase(this@TopUpBalanceActivity)!!
 
         setUpView()
         initData()
@@ -48,11 +55,28 @@ class TopUpBalanceActivity : AppCompatActivity() {
 
         }
         binding.tvTopUp.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe() {
+            if (bankAccount.isEmpty()) return@subscribe
             val topup: String = binding.textInputTopup.text.toString()
             balance += topup.toLong()
             Constant.userModel.security[Constant.BALANCE] = balance
 
-            val data = Constant.getUserModelData()
+            val c = Calendar.getInstance().time
+            println("Current time => $c")
+
+            val df = SimpleDateFormat("dd/mm/yyyy", Locale.getDefault())
+            val formattedDate: String = df.format(c)
+
+            appDataBase.TransactionDao().insertTransaction(
+                Transaction(
+                    "trans_${Constant.userModel.user_id}_${Constant.DEPOSIT}",
+                    Constant.userModel.user_id,
+                    Constant.DEPOSIT,
+                    formattedDate,
+                    topup
+                )
+            )
+
+            val data = Constant.getUserModelData(Constant.userModel)
 
             FirebaseFirestore.getInstance().collection("user_data")
                 .document(Constant.userModel.user_id).update(data).addOnCompleteListener {

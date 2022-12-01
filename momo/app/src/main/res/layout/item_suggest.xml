@@ -19,6 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
+        android:fontFamily="@font/inter_regular"
+        android:textSize="10sp"
         android:gravity="center"
         android:text="Mua vé xem phim" />
 

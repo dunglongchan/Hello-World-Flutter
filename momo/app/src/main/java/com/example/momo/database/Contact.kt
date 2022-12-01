@@ -9,6 +9,6 @@ data class Contact(
     @ColumnInfo(name = "name") val name: String,
     @PrimaryKey
     @ColumnInfo(name = "phoneNumber") val phoneNumber: String,
-    @ColumnInfo(name = "momoAccount") val isContactUseMomo: Boolean
+    @ColumnInfo(name = "momoAccount") var isContactUseMomo: Boolean
 ) {
 }

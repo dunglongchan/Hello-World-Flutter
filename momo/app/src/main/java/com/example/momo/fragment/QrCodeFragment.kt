@@ -6,7 +6,6 @@ import androidx.camera.core.ImageCapture
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.MutableLiveData
 import com.example.momo.databinding.FragmentQrcodeBinding
 
 class QrCodeFragment : BaseFragment<FragmentQrcodeBinding>() {
@@ -16,21 +15,15 @@ class QrCodeFragment : BaseFragment<FragmentQrcodeBinding>() {
 
     private var imageCapture: ImageCapture? = null
 
-    companion object {
-        var close: MutableLiveData<Boolean> = MutableLiveData()
-    }
 
     override fun setup() {
 
-        close.value = false
-
-
 
         binding.ivClose.setOnClickListener {
-            close.value = true
+            requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
         }
         binding.scan.setOnClickListener {
-            close.value = true
+            requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
         }
     }
 

@@ -11,24 +11,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_backgr_9"
         android:orientation="horizontal"
         android:paddingHorizontal="15dp"
-        android:paddingVertical="10dp">
+        android:paddingVertical="20dp">
 
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_left_arrow_icon"
-            app:tint="@color/black" />
+            app:tint="@color/white" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/inter_semibold"
             android:gravity="center"
-            android:text="Top up balance"
-            android:textColor="@color/black"
+            android:text="@string/top_up_balance"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
         <ImageView
@@ -66,7 +68,8 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nap tien vao vi"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="@string/top_uo"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
@@ -93,6 +96,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginStart="15dp"
+                            android:fontFamily="@font/inter_regular"
                             android:text="Momo e wallet"
                             android:textColor="@color/black"
                             android:textSize="16sp"
@@ -134,6 +138,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
+                            android:fontFamily="@font/inter_regular"
                             android:inputType="number"
                             android:textColorHint="@color/black" />
 
@@ -223,9 +228,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="15dp"
                             android:layout_weight="1"
-                            android:text="Add Bank Account"
+                            android:fontFamily="@font/inter_regular"
+                            android:text="@string/add_bank_account_"
                             android:textColor="@color/black"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
 
                         <ImageView
                             android:layout_width="24dp"
@@ -260,9 +266,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="15dp"
                             android:layout_weight="1"
-                            android:text="Top up at Station"
+                            android:fontFamily="@font/inter_regular"
+                            android:text="@string/top_up_at_station_"
                             android:textColor="@color/black"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
 
                         <ImageView
                             android:layout_width="24dp"
@@ -300,7 +307,7 @@
         android:background="@drawable/custom_backgr2"
         android:gravity="center"
         android:paddingVertical="10dp"
-        android:text="Top up"
+        android:text="@string/top_up"
         android:textColor="@color/white"
         android:textSize="18sp" />
 

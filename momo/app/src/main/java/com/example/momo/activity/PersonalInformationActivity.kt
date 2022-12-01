@@ -1,13 +1,29 @@
 package com.example.momo.activity
 
 import android.annotation.SuppressLint
+import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.example.momo.R
+import com.example.momo.common.Common
 import com.example.momo.common.Constant
 import com.example.momo.databinding.ActivityPersonalInformationBinding
 import com.jakewharton.rxbinding3.view.clicks
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 class PersonalInformationActivity : AppCompatActivity() {
@@ -32,6 +48,8 @@ class PersonalInformationActivity : AppCompatActivity() {
 
         Log.e("====", Constant.userModel.toString())
 
+        Glide.with(this).load(Constant.userModel.avatar).error(R.drawable.avatar)
+            .into(binding.ivAvatar)
         binding.tvName.text = Constant.userModel.name
         binding.tvPhoneNumber.text = "SDT: ${Constant.userModel.phoneNumber}"
         if (Constant.userModel.security[Constant.VERIFIED] as Boolean) binding.tvConfirm.text =
@@ -56,8 +74,32 @@ class PersonalInformationActivity : AppCompatActivity() {
         binding.ivBack.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
             onBackPressed()
         }
-        binding.tvDownloadQrcode.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
 
+        binding.tvLog.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe() {
+            val dialog = AlertDialog.Builder(this)
+            dialog.setTitle(getString(R.string.are_you_sure_exit))
+            dialog.setPositiveButton(getString(R.string.yes)) { dialog, which ->
+                Common.setValidateUser(this@PersonalInformationActivity, "")
+                startActivity(
+                    Intent(
+                        this@PersonalInformationActivity,
+                        SplashActivity::class.java
+                    ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                )
+                dialog.dismiss()
+                finish()
+            }
+            dialog.setNegativeButton(getString(R.string.no)) { dialog, which ->
+                dialog.dismiss()
+            }
+            dialog.setCancelable(true)
+            dialog.show()
+        }
+
+        binding.tvDownloadQrcode.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
+            val bitmap = BitmapFactory.decodeResource(resources, R.drawable.qrcode_tcea)
+            saveBitmapToMedia(bitmap, this)
+            Toast.makeText(this, getString(R.string.save_to_media), Toast.LENGTH_SHORT).show()
         }
         binding.tvEditPersonal.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
             startActivityForResult(
@@ -84,13 +126,10 @@ class PersonalInformationActivity : AppCompatActivity() {
             )
         }
         binding.tvBlockList.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
-
+            Toast.makeText(this, "Empty", Toast.LENGTH_SHORT).show()
         }
         binding.tvFriendList.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
-
-        }
-        binding.tvLogOut.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
-            finish()
+            Toast.makeText(this, "Empty", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -120,5 +159,38 @@ class PersonalInformationActivity : AppCompatActivity() {
 
             }
         }
+    }
+
+    fun saveBitmapToMedia(bitmap: Bitmap, context: Context) {
+        val root = File(
+            Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES
+            ).path
+        )
+        val file = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date()) + ".jpg"
+
+        val filename = File(root, file)
+
+        try {
+            FileOutputStream(filename).use { out ->
+                bitmap.compress(
+                    Bitmap.CompressFormat.PNG,
+                    100,
+                    out
+                )
+
+            }
+            val resolver = context.contentResolver
+            val contentValues = ContentValues().apply {
+                put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis())
+                put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+                put(MediaStore.MediaColumns.DATA, filename.path)
+            }
+            resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
+
     }
 }

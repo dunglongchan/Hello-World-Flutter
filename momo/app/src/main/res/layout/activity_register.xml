@@ -9,8 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:fontFamily="@font/inter_semibold"
         android:gravity="center"
-        android:text="Register"
+        android:text="@string/register"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,8 +109,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/inter_medium"
             android:gravity="left"
-            android:text="Confirm OTP"
+            android:text="@string/confirm_otp_"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -140,7 +142,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="15dp"
-        android:text="Mã xác thực 4 số được gửi đến:"
+        android:fontFamily="@font/inter_medium"
+        android:text="@string/otp_h_send_to"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintTop_toBottomOf="@+id/ll_content" />
@@ -229,8 +232,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="25dp"
-        android:gravity="center"
         android:layout_marginTop="15dp"
+        android:gravity="center"
         android:textColor="@color/gnt_red"
         android:textSize="14sp"
         app:layout_constraintTop_toBottomOf="@+id/ll_otp" />
@@ -252,8 +255,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_weight="1"
+            android:fontFamily="@font/inter_semibold"
             android:gravity="start"
-            android:text="Resend OTP"
+            android:text="@string/resend_otp_"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -263,21 +267,25 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_weight="1"
+            android:fontFamily="@font/inter_semibold"
             android:gravity="end"
-            android:text="Đổi SĐT"
+            android:text="@string/change_number"
             android:textColor="@color/gnt_blue"
             android:textSize="16sp" />
     </LinearLayout>
 
-    <Button
+    <TextView
         android:id="@+id/verifyOTPBtn"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginBottom="30dp"
-        android:backgroundTint="@color/primary_color"
-        android:text="Tiếp tục"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/custom_backgr2"
+        android:fontFamily="@font/inter_semibold"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:text="@string/continue_"
         android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

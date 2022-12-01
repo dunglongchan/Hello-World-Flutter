@@ -38,10 +38,12 @@
                     app:tint="@color/white" />
 
                 <TextView
+                    android:id="@+id/et_search"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="10dp"
+                    android:background="@null"
                     android:text="@string/search"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
@@ -56,10 +58,11 @@
                 android:contentDescription="TODO"
                 android:src="@drawable/ic_notify_icon" />
 
-            <ImageView
+            <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/iv_avatar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                app:riv_oval="true"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="20dp"
                 android:src="@drawable/ic_circle" />
@@ -118,11 +121,11 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
+                                android:fontFamily="@font/inter_medium"
                                 android:gravity="center"
-                                android:text="Nạp Tiền"
+                                android:text="@string/top_up"
                                 android:textColor="@color/black"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -136,17 +139,17 @@
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:layout_gravity="center"
-                                android:src="@drawable/ic_dmeo" />
+                                android:src="@drawable/ic_naoptien_" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
+                                android:fontFamily="@font/inter_medium"
                                 android:gravity="center"
-                                android:text="Rút tiền"
+                                android:text="@string/withdraw"
                                 android:textColor="@color/black"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -160,17 +163,17 @@
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:layout_gravity="center"
-                                android:src="@drawable/ic_dmeo" />
+                                android:src="@drawable/ic_nhan_tien" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
+                                android:fontFamily="@font/inter_medium"
                                 android:gravity="center"
-                                android:text="Mã QR nhận tiền"
+                                android:text="@string/qr_code_get_money"
                                 android:textColor="@color/black"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -184,17 +187,17 @@
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:layout_gravity="center"
-                                android:src="@drawable/ic_dmeo" />
+                                android:src="@drawable/ic_scan_qr" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
+                                android:fontFamily="@font/inter_medium"
                                 android:gravity="center"
-                                android:text="Mã QR thanh toán"
+                                android:text="@string/purchase_code"
                                 android:textColor="@color/black"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -208,17 +211,17 @@
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:layout_gravity="center"
-                                android:src="@drawable/ic_dmeo" />
+                                android:src="@drawable/ic_group_1130" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
+                                android:fontFamily="@font/inter_medium"
                                 android:gravity="center"
-                                android:text="Quét mã"
+                                android:text="@string/scan"
                                 android:textColor="@color/black"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
+                                android:textSize="12sp" />
                         </LinearLayout>
 
 
@@ -244,19 +247,19 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:fontFamily="@font/inter_medium"
                             android:text="300.000vnd"
                             android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/tv_account"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Quản lý tài khoản"
+                            android:fontFamily="@font/inter_medium"
+                            android:text="@string/account_manager"
                             android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textSize="16sp" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -268,10 +271,10 @@
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/inter_semibold"
                 android:text="Dịch vụ của bạn"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -281,16 +284,17 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/ll_tranferMoney"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_menu_listrik" />
+                        android:src="@drawable/ic_transfer" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -298,12 +302,13 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="Mua vé xem phim" />
+                        android:text="@string/sent_money" />
 
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_buyCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -317,11 +322,11 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="Mua mã thẻ di động" />
+                        android:text="@string/buy_card" />
 
 
                 </LinearLayout>
@@ -367,7 +372,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="Ví trả sau" />
+                        android:text="@string/wallet" />
 
                 </LinearLayout>
 
@@ -446,7 +451,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="Bảo hiểm" />
+                        android:text="@string/protection" />
 
 
                 </LinearLayout>
@@ -469,7 +474,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="Khác" />
+                        android:text="@string/other" />
 
                 </LinearLayout>
 
@@ -481,16 +486,16 @@
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Momo đề xuất"
+                android:fontFamily="@font/inter_semibold"
+                android:text="@string/momo_suggest"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="10dp"
                 android:id="@+id/rcv_momo_suggest"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:scrollbars="horizontal"
                 tools:itemCount="6"
@@ -502,10 +507,10 @@
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Cập nhật mới"
+                android:fontFamily="@font/inter_semibold"
+                android:text="@string/new_update"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_new_update"
@@ -523,16 +528,16 @@
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Ưu đãi của bạn"
+                android:fontFamily="@font/inter_semibold"
+                android:text="@string/your_promo"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="10dp"
                 android:id="@+id/rcv_your_promo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:scrollbars="horizontal"
                 tools:itemCount="3"
@@ -544,16 +549,16 @@
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Ưu đãi mới"
+                android:fontFamily="@font/inter_semibold"
+                android:text="@string/new_promo"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="10dp"
                 android:id="@+id/rcv_new_promo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:scrollbars="horizontal"
                 tools:itemCount="3"

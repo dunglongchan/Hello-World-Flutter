@@ -32,7 +32,7 @@ class NewProfileActivity : AppCompatActivity() {
             Constant.userModel.information[Constant.NATIONAL] = binding.textInput3.text.toString()
 
 
-            val data = Constant.getUserModelData()
+            val data = Constant.getUserModelData(Constant.userModel)
 
             FirebaseFirestore.getInstance().collection("user_data")
                 .document(Constant.userModel.user_id).set(data)

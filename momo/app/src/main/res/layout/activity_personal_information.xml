@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.PersonalInformationActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".activity.PersonalInformationActivity">
 
     <LinearLayout
         android:id="@+id/ll_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:background="@drawable/custom_backgr_9"
+        android:orientation="horizontal"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="10dp">
 
         <ImageView
             android:id="@+id/iv_back"
@@ -21,17 +22,26 @@
             android:layout_height="wrap_content"
             android:padding="15dp"
             android:src="@drawable/ic_left_arrow_icon"
-            app:tint="@color/black" />
+            app:tint="@color/white" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/inter_semibold"
             android:gravity="center"
-            android:text="Trang cá nhân của tôi"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:text="@string/my_profile"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:src="@drawable/ic_left_arrow_icon"
+            android:visibility="invisible"
+            app:tint="@color/white" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -46,6 +56,7 @@
             android:paddingBottom="20dp">
 
             <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/iv_avatar"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
@@ -57,6 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
                 android:elevation="5dp"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="5dp">
@@ -75,8 +87,7 @@
                         android:layout_height="wrap_content"
                         android:text="Tran Long Dung"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/tv_phoneNumber"
@@ -95,22 +106,24 @@
                         android:background="@drawable/btn_backgr_3"
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="5dp"
-                        android:text="Da xac thuc"
-                        android:textColor="@color/black"
+                        android:text="@string/vertified"
+                        android:textColor="@color/white"
                         android:textSize="16sp" />
 
                     <ImageView
                         android:id="@+id/iv_qrcode"
                         android:layout_width="match_parent"
                         android:layout_height="300dp"
-                        android:layout_marginTop="10dp" />
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/qrcode_tcea" />
 
                     <TextView
                         android:id="@+id/tv_download_qrcode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_medium"
                         android:gravity="center"
-                        android:text="Download"
+                        android:text="@string/download"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
@@ -133,10 +146,11 @@
                     android:id="@+id/tv_personal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Personal information"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="@string/personal_information_"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold"
+
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -144,8 +158,9 @@
                     android:id="@+id/tv_editPersonal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_semibold"
                     android:gravity="center"
-                    android:text="Edit"
+                    android:text="@string/edit_"
                     android:textColor="@color/gnt_blue"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -156,10 +171,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:drawableStart="@drawable/english"
+                    android:drawableStart="@drawable/ic_birthday"
                     android:drawablePadding="10dp"
+                    android:fontFamily="@font/inter_medium"
                     android:gravity="center"
-                    android:text="Birthday"
+                    android:text="@string/birthday"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -170,10 +186,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:drawableStart="@drawable/english"
+                    android:drawableStart="@drawable/ic_gender"
                     android:drawablePadding="10dp"
+                    android:fontFamily="@font/inter_medium"
                     android:gravity="center"
-                    android:text="Gender"
+                    android:text="@string/gender"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -184,8 +201,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:drawableStart="@drawable/english"
+                    android:drawableStart="@drawable/ic_card"
                     android:drawablePadding="10dp"
+                    android:fontFamily="@font/inter_medium"
                     android:gravity="center"
                     android:text="CCCD/CMND"
                     android:textColor="@color/black"
@@ -198,10 +216,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:drawableStart="@drawable/english"
+                    android:drawableStart="@drawable/ic_activity"
                     android:drawablePadding="10dp"
+                    android:fontFamily="@font/inter_medium"
                     android:gravity="center"
-                    android:text="Online"
+                    android:text="@string/online"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -224,10 +243,10 @@
                     android:id="@+id/tv_contact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Contact"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="@string/contact"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -235,8 +254,9 @@
                     android:id="@+id/tv_editContact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_semibold"
                     android:gravity="center"
-                    android:text="Edit"
+                    android:text="@string/edit__"
                     android:textColor="@color/gnt_blue"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -247,10 +267,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:drawableStart="@drawable/english"
+                    android:drawableStart="@drawable/ic_address"
                     android:drawablePadding="10dp"
+                    android:fontFamily="@font/inter_medium"
                     android:gravity="center"
-                    android:text="Birthday"
+                    android:text="@string/address"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -261,10 +282,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:drawableStart="@drawable/english"
+                    android:drawableStart="@drawable/ic_email"
                     android:drawablePadding="10dp"
+                    android:fontFamily="@font/inter_medium"
                     android:gravity="center"
-                    android:text="Gender"
+                    android:text="Mail"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -287,10 +309,11 @@
                     android:id="@+id/tv_private"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Personal information"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="@string/personal_information"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold"
+
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -298,8 +321,9 @@
                     android:id="@+id/tv_editPrivate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_medium"
                     android:gravity="center"
-                    android:text="Edit"
+                    android:text="@string/edit"
                     android:textColor="@color/gnt_blue"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -310,10 +334,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:drawableStart="@drawable/english"
+                    android:drawableStart="@drawable/ic_block"
                     android:drawablePadding="10dp"
+                    android:fontFamily="@font/inter_medium"
                     android:gravity="center"
-                    android:text="Block List"
+                    android:text="@string/block_list"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -324,7 +349,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:drawableStart="@drawable/english"
+                    android:drawableStart="@drawable/ic_friend"
                     android:drawablePadding="10dp"
                     android:gravity="center"
                     android:text="List Friend"
@@ -342,13 +367,18 @@
                 android:background="#f9f9f9" />
 
             <TextView
-                android:id="@+id/tv_logOut"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_log"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Log out"
+                android:layout_marginHorizontal="15dp"
+                android:drawableStart="@drawable/ic_turn_off"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/inter_semibold"
+                android:gravity="left"
+                android:paddingBottom="10dp"
+                android:text="@string/log_out"
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 

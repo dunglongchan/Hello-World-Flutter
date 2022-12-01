@@ -1,6 +1,9 @@
 package com.example.momo.activity
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,11 +14,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.momo.R
+import com.example.momo.common.Common
 import com.example.momo.common.Constant
 import com.example.momo.databinding.ActivityAuthenticBinding
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 class AuthenticActivity : AppCompatActivity() {
@@ -26,6 +31,13 @@ class AuthenticActivity : AppCompatActivity() {
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var phoneNumber: String
 
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase)
+        val configuration = Configuration()
+        configuration.setLocale(Locale(Common.getPreLanguage(this)!!))
+        applyOverrideConfiguration(configuration)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAuthenticBinding.inflate(layoutInflater)
@@ -34,12 +46,13 @@ class AuthenticActivity : AppCompatActivity() {
         OTP = intent.getStringExtra("OTP").toString()
         resendToken = intent.getParcelableExtra("resendToken")!!
         phoneNumber = intent.getStringExtra("phoneNumber")!!
-
+        Common.setLocale(this,Common.getPreLanguage(this))
         auth = FirebaseAuth.getInstance()
 
         setupView()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupView() {
         binding.otpProgressBar.visibility = View.INVISIBLE
 
@@ -51,6 +64,8 @@ class AuthenticActivity : AppCompatActivity() {
             resendVerificationCode()
             resendOTPTvVisibility()
         }
+
+        binding.tvPhoneNumber.setText(getString(R.string.otp_h_send_to) + " 84${phoneNumber}")
 
         binding.verifyOTPBtn.setOnClickListener {
             val typedOTP =

@@ -11,8 +11,9 @@
         android:id="@+id/ll_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:background="@drawable/custom_backgr_9"
+        android:orientation="horizontal"
+        android:paddingVertical="15dp">
 
         <ImageView
             android:id="@+id/iv_back"
@@ -20,28 +21,29 @@
             android:layout_height="wrap_content"
             android:padding="15dp"
             android:src="@drawable/ic_left_arrow_icon"
-            app:tint="@color/black" />
+            app:tint="@color/white" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:fontFamily="@font/inter_semibold"
             android:gravity="center"
-            android:text="Trang cá nhân của tôi"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:text="@string/my_profile_"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/tv_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:fontFamily="@font/inter_semibold"
             android:padding="15dp"
-            android:id="@+id/tv_save"
-            android:text="Save"
-            android:textColor="@color/gnt_blue"
-            android:textSize="14sp" />
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -72,7 +74,7 @@
                     app:expandedHintEnabled="true"
                     app:hintAnimationEnabled="true"
                     app:hintEnabled="true"
-                    app:startIconDrawable="@drawable/english"
+
                     app:startIconTint="@null">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -80,6 +82,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
+                        android:fontFamily="@font/inter_regular"
                         android:inputType="text"
                         android:textColorHint="@color/black" />
 
@@ -133,7 +136,7 @@
                     app:expandedHintEnabled="true"
                     app:hintAnimationEnabled="true"
                     app:hintEnabled="true"
-                    app:startIconDrawable="@drawable/english"
+
                     app:startIconTint="@null">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -141,6 +144,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
+                        android:fontFamily="@font/inter_regular"
+
                         android:inputType="text"
                         android:textColorHint="@color/black" />
 
@@ -192,7 +197,7 @@
                     android:enabled="false"
                     android:textColorHint="@android:color/black"
                     app:endIconMode="clear_text"
-                    app:startIconDrawable="@drawable/english"
+
                     app:startIconTint="@null">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -202,6 +207,7 @@
                         android:background="@null"
                         android:editable="false"
                         android:enabled="false"
+                        android:fontFamily="@font/inter_regular"
                         android:inputType="text"
                         android:textColorHint="@color/black" />
 
@@ -255,7 +261,7 @@
                     app:expandedHintEnabled="true"
                     app:hintAnimationEnabled="true"
                     app:hintEnabled="true"
-                    app:startIconDrawable="@drawable/english"
+
                     app:startIconTint="@null">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -263,6 +269,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
+                        android:fontFamily="@font/inter_regular"
                         android:inputType="text"
                         android:textColorHint="@color/black" />
 
@@ -316,7 +323,7 @@
                     app:expandedHintEnabled="true"
                     app:hintAnimationEnabled="true"
                     app:hintEnabled="true"
-                    app:startIconDrawable="@drawable/english"
+
                     app:startIconTint="@null">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -324,6 +331,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
+                        android:fontFamily="@font/inter_regular"
                         android:inputType="text"
                         android:textColorHint="@color/black" />
 
@@ -373,11 +381,11 @@
                     android:background="@null"
                     android:hint="Habit"
                     android:textColorHint="@android:color/black"
+                    app:endIconMode="clear_text"
                     app:expandedHintEnabled="true"
                     app:hintAnimationEnabled="true"
                     app:hintEnabled="true"
-                    app:endIconMode="clear_text"
-                    app:startIconDrawable="@drawable/english"
+
                     app:startIconTint="@null">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -385,6 +393,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
+                        android:fontFamily="@font/inter_regular"
                         android:inputType="text"
                         android:textColorHint="@color/black" />
 
@@ -438,7 +447,7 @@
                     app:expandedHintEnabled="true"
                     app:hintAnimationEnabled="true"
                     app:hintEnabled="true"
-                    app:startIconDrawable="@drawable/english"
+
                     app:startIconTint="@null">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -446,6 +455,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
+                        android:fontFamily="@font/inter_regular"
                         android:inputType="text"
                         android:textColorHint="@color/black" />
 

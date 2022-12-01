@@ -1,13 +1,16 @@
 package com.example.momo.common
 
+import com.example.momo.database.Contact
+import com.example.momo.database.Transaction
 import com.example.momo.model.ConversationModel
 import com.example.momo.model.TransactionModel
 import com.example.momo.model.UserModel
-import java.util.*
 
 class Constant {
     companion object {
         const val APP_DB_NAME = "Momo.db"
+        const val DEPOSIT = "deposit"
+        const val TOP_UP = "topUP"
         const val NATIONAL = "national"
         const val NAME = "name"
         const val AVATAR = "avatar"
@@ -47,7 +50,10 @@ class Constant {
         const val CONVERSATION_MODEL = 103
         const val IS_USER_SIGNED = "is_user_signed"
         const val GET_MODEL = "get_model"
+
         var userModel: UserModel = UserModel("", "")
+        var listContact: ArrayList<Contact> = ArrayList()
+        val listConversationDetail: ArrayList<UserModel> = ArrayList()
 
         fun castDataToUserModel(data: MutableMap<String, Any>): UserModel {
             var name = ""
@@ -99,7 +105,7 @@ class Constant {
             )
         }
 
-        fun getUserModelData(): HashMap<String, Any> {
+        fun getUserModelData(userModel: UserModel): HashMap<String, Any> {
             return hashMapOf(
                 USER_ID to userModel.user_id,
                 AVATAR to "",
@@ -130,7 +136,7 @@ class Constant {
             )
         }
 
-        fun castDataToTransactionModel(data: MutableMap<String, Any>): TransactionModel {
+        fun castDataToTransactionModel(data: MutableMap<String, Any>): Transaction {
             var date = ""
             var receiver = ""
             var sender = ""
@@ -157,11 +163,22 @@ class Constant {
                 }
             }
 
-            return TransactionModel(transactionID, sender, receiver, date, value)
+            return Transaction(transactionID, sender, receiver, date, value)
         }
 
-        fun castDataToCoversationModel(data: MutableMap<String, Any>): ConversationModel {
-            var content: HashMap<String, Objects> = HashMap()
+        fun getTransactionModelData(transactionModel: TransactionModel): HashMap<String, Any> {
+            return hashMapOf(
+                Constant.TRANSACTION_ID to transactionModel.transactionID,
+                Constant.RECEIVER to transactionModel.receiver,
+                Constant.SENDER to transactionModel.sender,
+                Constant.DATE to transactionModel.date,
+                Constant.VALUE to transactionModel.value,
+
+                )
+        }
+
+        fun castDataToConversationModel(data: MutableMap<String, Any>): ConversationModel {
+            var content: HashMap<String, Any> = HashMap()
             var receiver = ""
             var sender = ""
             var conversationID = ""
@@ -173,7 +190,7 @@ class Constant {
                     }
 
                     CONTENT -> {
-                        content = i.value as HashMap<String, Objects>
+                        content = i.value as HashMap<String, Any>
                     }
 
                     RECEIVER -> {
@@ -187,6 +204,20 @@ class Constant {
             }
 
             return ConversationModel(conversationID, sender, receiver, content)
+        }
+
+        fun getConversationModelData(conversationModel: ConversationModel): HashMap<String, Any> {
+            return hashMapOf(
+                Constant.CONVERSATION_ID to conversationModel.conversationID,
+                Constant.SENDER to conversationModel.sender,
+                Constant.RECEIVER to conversationModel.receiver,
+                Constant.CONTENT to hashMapOf(
+                    Constant.MESSAGE to conversationModel.content[MESSAGE],
+                    Constant.TYPE to conversationModel.content[TYPE],
+                    Constant.VALUE to conversationModel.content[VALUE]
+                ),
+
+                )
         }
     }
 }

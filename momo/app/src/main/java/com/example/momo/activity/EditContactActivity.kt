@@ -46,26 +46,26 @@ class EditContactActivity : AppCompatActivity() {
             Constant.ADDRESS -> {
                 when (value) {
                     1 -> {
-                        binding.imAddress.setImageResource(R.drawable.english)
+                        binding.imAddress.setImageResource(R.drawable.ic_resource_public)
                     }
                     2 -> {
-                        binding.imAddress.setImageResource(R.drawable.ic_dmeo)
+                        binding.imAddress.setImageResource(R.drawable.ic_friend)
                     }
                     3 -> {
-                        binding.imAddress.setImageResource(R.drawable.ic_game)
+                        binding.imAddress.setImageResource(R.drawable.ic_resource_private)
                     }
                 }
             }
             Constant.EMAIL -> {
                 when (value) {
                     1 -> {
-                        binding.imEmail.setImageResource(R.drawable.english)
+                        binding.imEmail.setImageResource(R.drawable.ic_resource_public)
                     }
                     2 -> {
-                        binding.imEmail.setImageResource(R.drawable.ic_dmeo)
+                        binding.imEmail.setImageResource(R.drawable.ic_friend)
                     }
                     3 -> {
-                        binding.imEmail.setImageResource(R.drawable.ic_game)
+                        binding.imEmail.setImageResource(R.drawable.ic_resource_private)
                     }
                 }
             }
@@ -94,7 +94,7 @@ class EditContactActivity : AppCompatActivity() {
         Constant.userModel.information[Constant.ADDRESS] =
             binding.textInputAddress.text.toString()
 
-        val data = Constant.getUserModelData()
+        val data = Constant.getUserModelData(Constant.userModel)
 
         FirebaseFirestore.getInstance().collection("user_data")
             .document(Constant.userModel.user_id).update(data)
@@ -113,19 +113,19 @@ class EditContactActivity : AppCompatActivity() {
 
         popupBinding.tvPublic.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe() {
             Constant.userModel.policy[key] = 1
-            logo.setImageResource(R.drawable.english)
+            logo.setImageResource(R.drawable.ic_resource_public)
             popUpMenu.dismiss()
         }
 
         popupBinding.tvFriends.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe() {
             Constant.userModel.policy[key] = 2
-            logo.setImageResource(R.drawable.ic_dmeo)
+            logo.setImageResource(R.drawable.ic_friend)
             popUpMenu.dismiss()
         }
 
         popupBinding.tvPrivate.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe() {
             Constant.userModel.policy[key] = 3
-            logo.setImageResource(R.drawable.ic_game)
+            logo.setImageResource(R.drawable.ic_resource_private)
             popUpMenu.dismiss()
         }
 

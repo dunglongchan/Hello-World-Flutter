@@ -35,7 +35,7 @@ class GuideFragment : Fragment() {
                 mBinding.ivIntro.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(),
-                        R.drawable.img1
+                        R.drawable.momo1
                     )
                 )
                 mBinding.tvTitle.text = getString(R.string.intro1)
@@ -44,7 +44,7 @@ class GuideFragment : Fragment() {
                 mBinding.ivIntro.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(),
-                        R.drawable.img3
+                        R.drawable.momo2
                     )
                 )
                 mBinding.tvTitle.text = resources.getString(R.string.intro2)
@@ -53,7 +53,7 @@ class GuideFragment : Fragment() {
                 mBinding.ivIntro.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(),
-                        R.drawable.img3
+                        R.drawable.momo3
                     )
                 )
                 mBinding.tvTitle.text = resources.getString(R.string.intro3)
@@ -62,7 +62,7 @@ class GuideFragment : Fragment() {
                 mBinding.ivIntro.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(),
-                        R.drawable.img1
+                        R.drawable.momo4
                     )
                 )
                 mBinding.tvTitle.text = resources.getString(R.string.intro4)

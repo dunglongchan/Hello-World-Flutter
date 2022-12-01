@@ -26,6 +26,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activity.BuyDataActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.BuyTicketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.WebViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.TransferDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.TransferMoneyActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.DepositeActivity"
             android:exported="false" />
         <activity

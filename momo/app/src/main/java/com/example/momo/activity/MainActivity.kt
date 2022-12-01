@@ -9,30 +9,38 @@ import android.os.Bundle
 import android.provider.ContactsContract
 import android.provider.Settings
 import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.momo.R
 import com.example.momo.adapter.ViewPagerAdapter
+import com.example.momo.common.Common
+import com.example.momo.common.Constant
 import com.example.momo.database.AppDataBase
 import com.example.momo.database.Contact
 import com.example.momo.databinding.ActivityMainBinding
-import com.example.momo.fragment.QrCodeFragment
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.io.IOException
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), GetContactInformation {
 
     private var dialog: AlertDialog? = null
     private lateinit var dataBase: AppDataBase
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        Common.setValidateUser(this, Constant.userModel.user_id)
 
         val alertDialog = AlertDialog.Builder(this)
             .setMessage("You need to allow permissions to use this app")
@@ -79,27 +87,22 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.home -> {
                     binding.viewpager.currentItem = 0
-                    binding.nvBtm.visibility = View.VISIBLE
                     true
                 }
                 R.id.voucher -> {
-                    binding.nvBtm.visibility = View.VISIBLE
                     binding.viewpager.currentItem = 1
                     true
                 }
                 R.id.tradeHistory -> {
                     binding.viewpager.currentItem = 2
-                    binding.nvBtm.visibility = View.GONE
                     true
                 }
                 R.id.chat -> {
                     binding.viewpager.currentItem = 3
-                    binding.nvBtm.visibility = View.VISIBLE
                     true
                 }
                 R.id.profile -> {
                     binding.viewpager.currentItem = 4
-                    binding.nvBtm.visibility = View.VISIBLE
                     true
                 }
                 else -> false
@@ -107,14 +110,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        QrCodeFragment.close.observe(this, Observer {
-            if (it) {
-                binding.viewpager.currentItem = 0
-                binding.nvBtm.visibility = View.VISIBLE
-                QrCodeFragment.close.value = false
-            }
-        })
-
+        getTransaction()
     }
 
     override fun onStart() {
@@ -131,8 +127,6 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("Range")
     private fun readContact() {
-
-
         val cr = contentResolver
         val cur: Cursor? = cr.query(
             ContactsContract.Contacts.CONTENT_URI,
@@ -177,6 +171,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         cur?.close()
+        scanningContact()
     }
 
     internal fun checkPermission(permission: String, requestCode: Int): Boolean {
@@ -212,4 +207,76 @@ class MainActivity : AppCompatActivity() {
             } else readContact()
         }
     }
+
+    override fun scanningContact() {
+        GlobalScope.launch {
+
+            val listContact = dataBase.ContactDao().getAllContact()
+
+            if (listContact.isNotEmpty()) {
+                try {
+                    for (i in listContact) {
+                        val number1 = i.phoneNumber
+                        if (number1.length == 10 && number1.substring(0, 1) == "0") {
+                            number1.substring(1)
+                        }
+                        if (number1.length == 9) {
+                            FirebaseFirestore.getInstance().collection("user_data")
+                                .whereEqualTo("user_id", "user_84$number1")
+                                .get()
+                                .addOnSuccessListener { r ->
+                                    if (!r.isEmpty) {
+                                        Log.e("====", i.phoneNumber)
+                                        i.isContactUseMomo = true
+                                        dataBase.ContactDao().updateContact(true, i.phoneNumber)
+                                    }
+                                }
+                                .addOnFailureListener {
+                                    Log.e("====", it.message.toString())
+                                }
+                        }
+                    }
+                } catch (e: IOException) {
+                    print(e.message)
+                }
+            }
+
+            Constant.listContact = listContact as ArrayList<Contact>
+        }
+    }
+
+    override fun getTransaction() {
+        GlobalScope.launch {
+            withContext(Dispatchers.IO) {
+                FirebaseFirestore.getInstance().collection("transaction_data")
+                    .whereEqualTo(Constant.SENDER, Constant.userModel.user_id).get()
+                    .addOnSuccessListener { r ->
+                        if (!r.isEmpty) {
+                            for (doc in r) {
+                                val trans = Constant.castDataToTransactionModel(doc.data)
+                                dataBase.TransactionDao().insertTransaction(trans)
+                            }
+                        }
+                    }
+
+                FirebaseFirestore.getInstance().collection("transaction_data")
+                    .whereEqualTo(Constant.RECEIVER, Constant.userModel.user_id).get()
+                    .addOnSuccessListener { r ->
+                        if (!r.isEmpty) {
+                            for (doc in r) {
+                                val trans = Constant.castDataToTransactionModel(doc.data)
+                                dataBase.TransactionDao().insertTransaction(trans)
+                            }
+                        }
+                    }
+            }
+        }
+    }
+
+}
+
+interface GetContactInformation {
+    fun scanningContact()
+    fun getTransaction()
+//    fun getChatConversation()
 }

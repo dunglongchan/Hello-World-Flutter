@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.momo.R
 import com.example.momo.common.Constant
 import com.example.momo.databinding.ActivityEnterPasswordBinding
 import com.jakewharton.rxbinding3.view.clicks
@@ -27,8 +28,12 @@ class EnterPassWordActivity : AppCompatActivity() {
         setUpView()
     }
 
-    @SuppressLint("CheckResult")
+    @SuppressLint("CheckResult", "SetTextI18n")
     private fun setUpView() {
+
+        binding.tvSignIn.text = getString(R.string.momo_hello) + " ${Constant.userModel.name}"
+        binding.tvPhone.text = Constant.userModel.phoneNumber
+
         binding.btnLogin.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
             if (errorPassword > 4) {
                 Toast.makeText(this, "Khong Duoc Nhap Pass Nua", Toast.LENGTH_SHORT).show()

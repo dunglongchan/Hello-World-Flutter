@@ -63,91 +63,91 @@ class EditPersonalActivity : AppCompatActivity() {
             Constant.DOB -> {
                 when (policy) {
                     1 -> {
-                        binding.imBirthday.setImageResource(R.drawable.english)
+                        binding.imBirthday.setImageResource(R.drawable.ic_resource_public)
                     }
                     2 -> {
-                        binding.imBirthday.setImageResource(R.drawable.ic_dmeo)
+                        binding.imBirthday.setImageResource(R.drawable.ic_friend)
                     }
                     3 -> {
-                        binding.imBirthday.setImageResource(R.drawable.ic_game)
+                        binding.imBirthday.setImageResource(R.drawable.ic_resource_private)
                     }
                 }
             }
             Constant.EDUCATION -> {
                 when (policy) {
                     1 -> {
-                        binding.imEdu.setImageResource(R.drawable.english)
+                        binding.imEdu.setImageResource(R.drawable.ic_resource_public)
                     }
                     2 -> {
-                        binding.imEdu.setImageResource(R.drawable.ic_dmeo)
+                        binding.imEdu.setImageResource(R.drawable.ic_friend)
                     }
                     3 -> {
-                        binding.imEdu.setImageResource(R.drawable.ic_game)
+                        binding.imEdu.setImageResource(R.drawable.ic_resource_private)
                     }
                 }
             }
             Constant.HABIT -> {
                 when (policy) {
                     1 -> {
-                        binding.imHabit.setImageResource(R.drawable.english)
+                        binding.imHabit.setImageResource(R.drawable.ic_resource_public)
                     }
                     2 -> {
-                        binding.imHabit.setImageResource(R.drawable.ic_dmeo)
+                        binding.imHabit.setImageResource(R.drawable.ic_friend)
                     }
                     3 -> {
-                        binding.imHabit.setImageResource(R.drawable.ic_game)
+                        binding.imHabit.setImageResource(R.drawable.ic_resource_private)
                     }
                 }
             }
             Constant.JOB -> {
                 when (policy) {
                     1 -> {
-                        binding.imJob.setImageResource(R.drawable.english)
+                        binding.imJob.setImageResource(R.drawable.ic_resource_public)
                     }
                     2 -> {
-                        binding.imJob.setImageResource(R.drawable.ic_dmeo)
+                        binding.imJob.setImageResource(R.drawable.ic_friend)
                     }
                     3 -> {
-                        binding.imJob.setImageResource(R.drawable.ic_game)
+                        binding.imJob.setImageResource(R.drawable.ic_resource_private)
                     }
                 }
             }
             Constant.RELATIONSHIP -> {
                 when (policy) {
                     1 -> {
-                        binding.imRela.setImageResource(R.drawable.english)
+                        binding.imRela.setImageResource(R.drawable.ic_resource_public)
                     }
                     2 -> {
-                        binding.imRela.setImageResource(R.drawable.ic_dmeo)
+                        binding.imRela.setImageResource(R.drawable.ic_friend)
                     }
                     3 -> {
-                        binding.imRela.setImageResource(R.drawable.ic_game)
+                        binding.imRela.setImageResource(R.drawable.ic_resource_private)
                     }
                 }
             }
             Constant.GENDER -> {
                 when (policy) {
                     1 -> {
-                        binding.imGender.setImageResource(R.drawable.english)
+                        binding.imGender.setImageResource(R.drawable.ic_resource_public)
                     }
                     2 -> {
-                        binding.imGender.setImageResource(R.drawable.ic_dmeo)
+                        binding.imGender.setImageResource(R.drawable.ic_friend)
                     }
                     3 -> {
-                        binding.imGender.setImageResource(R.drawable.ic_game)
+                        binding.imGender.setImageResource(R.drawable.ic_resource_private)
                     }
                 }
             }
             Constant.NICKNAME -> {
                 when (policy) {
                     1 -> {
-                        binding.imNickname.setImageResource(R.drawable.english)
+                        binding.imNickname.setImageResource(R.drawable.ic_resource_public)
                     }
                     2 -> {
-                        binding.imNickname.setImageResource(R.drawable.ic_dmeo)
+                        binding.imNickname.setImageResource(R.drawable.ic_friend)
                     }
                     3 -> {
-                        binding.imNickname.setImageResource(R.drawable.ic_game)
+                        binding.imNickname.setImageResource(R.drawable.ic_resource_private)
                     }
                 }
             }
@@ -196,7 +196,7 @@ class EditPersonalActivity : AppCompatActivity() {
         Constant.userModel.information[Constant.EDUCATION] = binding.textInputEdu.text.toString()
         Constant.userModel.information[Constant.HABIT] = binding.textInputHabit.text.toString()
 
-        val data = Constant.getUserModelData()
+        val data = Constant.getUserModelData(Constant.userModel)
 
         FirebaseFirestore.getInstance().collection("user_data")
             .document(Constant.userModel.user_id).update(data)
@@ -215,19 +215,19 @@ class EditPersonalActivity : AppCompatActivity() {
 
         popupBinding.tvPublic.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe() {
             Constant.userModel.policy[key] = 1
-            logo.setImageResource(R.drawable.english)
+            logo.setImageResource(R.drawable.ic_resource_public)
             popUpMenu.dismiss()
         }
 
         popupBinding.tvFriends.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe() {
             Constant.userModel.policy[key] = 2
-            logo.setImageResource(R.drawable.ic_dmeo)
+            logo.setImageResource(R.drawable.ic_friend)
             popUpMenu.dismiss()
         }
 
         popupBinding.tvPrivate.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe() {
             Constant.userModel.policy[key] = 3
-            logo.setImageResource(R.drawable.ic_game)
+            logo.setImageResource(R.drawable.ic_resource_private)
             popUpMenu.dismiss()
         }
 

@@ -10,7 +10,9 @@ import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.momo.R
 import com.example.momo.common.Constant
 import com.example.momo.databinding.ActivityLoginBinding
 import com.example.momo.databinding.DialogRegisterBinding
@@ -36,7 +38,11 @@ class LoginActivity : AppCompatActivity() {
 
         binding.tvNext.setOnClickListener {
             number = binding.textInput.text!!.trim().toString()
-            if (!checkNumberValidate(number)) return@setOnClickListener
+            if (!checkNumberValidate(number)) {
+                Toast.makeText(this, getString(R.string.invalidate_number), Toast.LENGTH_SHORT)
+                    .show()
+                return@setOnClickListener
+            }
             if (number.length == 10) number = number.substring(1)
             binding.tvNext.isClickable = false
             binding.textInput.isClickable = false
@@ -88,7 +94,7 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
-    @SuppressLint("CheckResult")
+    @SuppressLint("CheckResult", "SetTextI18n")
     private fun showDialogRegister() {
         binding.otpProgressBar.visibility = View.GONE
         val dialog = Dialog(this@LoginActivity)
@@ -105,7 +111,7 @@ class LoginActivity : AppCompatActivity() {
         dialog.setCancelable(true)
         dialog.show()
 
-        dialogBinding.tvTitle.text = "Đăng ký MoMo với +84-$number"
+        dialogBinding.tvTitle.text = "${getString(R.string.register_momo)}-$number"
 
         dialogBinding.tvChangeNumber.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
             number = ""
