@@ -29,20 +29,10 @@ class NewProfileActivity : AppCompatActivity() {
             Constant.userModel.information[Constant.GENDER] = 1
             Constant.userModel.name = binding.textInput1.text.toString()
             Constant.userModel.information[Constant.EMAIL] = binding.textInput2.text.toString()
+            Constant.userModel.information[Constant.NATIONAL] = binding.textInput3.text.toString()
 
-            val data = hashMapOf(
-                Constant.USER_ID to Constant.userModel.user_id,
-                Constant.NAME to Constant.userModel.name,
-                Constant.INFORMATION to hashMapOf(
-                    Constant.EMAIL to Constant.userModel.information[Constant.EMAIL],
-                    Constant.NAME to Constant.userModel.information[Constant.GENDER],
-                    Constant.NATIONAL to Constant.userModel.information[Constant.NATIONAL],
-                ),
-                Constant.SECURITY to hashMapOf(
-                    Constant.PASSWORD to Constant.userModel.security[Constant.PASSWORD],
-                    Constant.TYPE to Constant.userModel.security[Constant.TYPE]
-                )
-            )
+
+            val data = Constant.getUserModelData(Constant.userModel)
 
             FirebaseFirestore.getInstance().collection("user_data")
                 .document(Constant.userModel.user_id).set(data)

@@ -27,4 +27,9 @@
     <string name="you_need_an_internet_connection_to_n_use_this_app">You need an internet connection to \n use this app</string>
     <string name="connect">Connect</string>
     <string name="put_otp_to_logging_in">Put OTP to Logging in</string>
+    <string name="nearly">Nearly</string>
+    <string name="transfer_service">Transfer service</string>
+    <string name="into_momo_wallet">Into Momo Wallet</string>
+    <string name="transfer">Transfer</string>
+    <string name="enter_message">Enter message</string>
 </resources>

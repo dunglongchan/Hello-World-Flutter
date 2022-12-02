@@ -1,8 +1,14 @@
 package com.example.momo.fragment
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.momo.R
+import com.example.momo.activity.DepositeActivity
+import com.example.momo.activity.PersonalInformationActivity
+import com.example.momo.activity.TopUpBalanceActivity
+import com.example.momo.activity.TransferMoneyActivity
 import com.example.momo.adapter.MomoSuggestAdapter
 import com.example.momo.adapter.NewPromoAdapter
 import com.example.momo.adapter.NewsUpdateAdapter
@@ -12,17 +18,40 @@ import com.example.momo.model.MomoSuggestModel
 import com.example.momo.model.NewPromoModel
 import com.example.momo.model.NewUpdateModel
 import com.example.momo.model.YourPromoModel
+import com.jakewharton.rxbinding3.view.clicks
+import java.util.concurrent.TimeUnit
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun getViewBinding(): FragmentHomeBinding {
         return FragmentHomeBinding.inflate(layoutInflater)
     }
 
+    @SuppressLint("CheckResult")
     override fun setup() {
         setUpInforMoMoSuggest()
         setUpInForNewsUpdate()
         setUpInForYourPromo()
         setUpInForNewPromo()
+
+        binding.ivAvatar.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
+            startActivity(Intent(requireActivity(), PersonalInformationActivity::class.java))
+        }
+
+        binding.ivNotify.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe {
+
+        }
+
+        binding.llRecharge.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe() {
+            startActivity(Intent(requireActivity(), TopUpBalanceActivity::class.java))
+        }
+
+        binding.llWithdraw.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe() {
+            startActivity(Intent(requireActivity(), DepositeActivity::class.java))
+        }
+
+        binding.llTranferMoney.clicks().throttleFirst(1, TimeUnit.SECONDS).subscribe() {
+            startActivity(Intent(requireActivity(), TransferMoneyActivity::class.java))
+        }
 
     }
 

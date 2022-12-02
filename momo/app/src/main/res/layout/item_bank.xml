@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:id="@+id/layout"
+    android:background="@drawable/custom_backgr_5"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="15dp">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_bankLogo"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/logo_momo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_oval="true" />
+
+    <TextView
+        android:id="@+id/tv_bankName"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="15dp"
+        android:text="Momo e wallet"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/iv_bankLogo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_feePrice"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:text="300.000 vnd"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_bankLogo"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bankName" />
+
+    <ImageView
+        android:id="@+id/iv_tick"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/english"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_voucher_icon"
         android:title="Voucher"/>
     <item
-        android:id="@+id/qrcode"
+        android:id="@+id/tradeHistory"
         android:icon="@drawable/ic_history2"
         android:title="lịch sử GD"/>
     <item

@@ -65,6 +65,17 @@ class LoginActivity : AppCompatActivity() {
 
     @SuppressLint("CheckResult")
     private fun signUp() {
+//        if (FirebaseAuth.getInstance().currentUser != null) {
+//            FirebaseFirestore.getInstance().collection("user_data")
+//                .whereEqualTo("user_id", "user_84$number")
+//                .get()
+//                .addOnSuccessListener { r ->
+//                    for (document in r) Constant.userModel =
+//                        Constant.castDataToUserModel(document.data)
+//                    isUserSign = true
+//                }
+//            startActivity(Intent(this@LoginActivity, EnterPassWordActivity::class.java))
+//        }
         searchForUser()
     }
 

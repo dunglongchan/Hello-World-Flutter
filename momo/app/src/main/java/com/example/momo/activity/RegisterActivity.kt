@@ -188,7 +188,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun sendToMain() {
-        Constant.userModel = UserModel("user_84$phoneNumber")
+        Constant.userModel = UserModel("user_84$phoneNumber" ,phoneNumber)
         startActivity(Intent(this, CreatePasswordActivity::class.java))
         finish()
     }
